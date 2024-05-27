@@ -12,7 +12,7 @@ import { Progress } from "@/components/ui/progress";
 
 export function ProjectsSection() {
   return (
-    <section className="min-h-screen py-8 max-md:pb-32 container mx-auto flex flex-col justify-center gap-8 md:snap-start md:snap-always">
+    <section className="min-h-screen py-8 container mx-auto flex flex-col justify-center gap-8 md:snap-start md:snap-always">
       <div className="flex justify-between items-center">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Projects
