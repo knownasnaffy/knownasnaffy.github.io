@@ -4,7 +4,7 @@ import { Mail } from "lucide-react";
 
 export function SkillsSection() {
   return (
-    <section className="h-screen container mx-auto flex flex-col justify-center gap-8 snap-start snap-always">
+    <section className="min-h-screen py-8 max-md:pb-16 container mx-auto flex flex-col justify-center gap-8 md:snap-start md:snap-always">
       <div className="flex justify-between items-center">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Skills & Tools
@@ -14,7 +14,7 @@ export function SkillsSection() {
           <Mail className="h-5 w-5" />
         </Button>
       </div>
-      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-10 place-items-center gap-8">
+      <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-10 place-items-center gap-6 md:gap-8">
         <SkillCard
           img={
             <svg viewBox="0 0 128 128">

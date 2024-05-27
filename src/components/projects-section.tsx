@@ -12,7 +12,7 @@ import { Progress } from "@/components/ui/progress";
 
 export function ProjectsSection() {
   return (
-    <section className="h-screen container mx-auto flex flex-col justify-center gap-8 snap-start snap-always">
+    <section className="min-h-screen py-8 max-md:pb-32 container mx-auto flex flex-col justify-center gap-8 md:snap-start md:snap-always">
       <div className="flex justify-between items-center">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Projects
@@ -43,9 +43,13 @@ function ProjectCard() {
           <CardDescription>
             A lengthy description of a small project.
           </CardDescription>
-          <CardDescription className="inline-flex items-center">
-            <Calendar className="w-4 h-4 mr-1" /> Started 11 May 2022{" "}
-            <Star className="w-4 h-4 mr-1 ml-2" /> 1 Star
+          <CardDescription className="inline-flex flex-wrap gap-2">
+            <span className="inline-flex items-center gap-1">
+              <Calendar className="w-4 h-4" /> Started 11 May 2022
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <Star className="w-4 h-4" /> 1 Star
+            </span>
           </CardDescription>
         </CardHeader>
         <CardFooter className="flex flex-wrap gap-2">
