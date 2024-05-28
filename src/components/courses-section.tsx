@@ -41,7 +41,6 @@ export default function CoursesSection() {
         </Dialog>
       </div>
       <div className="grid md:grid-cols-2 place-items-center gap-8">
-        {/* IDEA: When the user hovers over the card, a popup bubble will appear on the progressbar aligned to the bottom and animating in from the left */}
         <QualificationCard
           course="Secondary Education"
           org="Central Board of Secondary Education"
