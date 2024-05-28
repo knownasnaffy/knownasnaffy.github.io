@@ -7,6 +7,14 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 
 export default function CoursesSection() {
   return (
@@ -15,10 +23,22 @@ export default function CoursesSection() {
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Courses
         </h1>
-        <Button className="gap-2" variant="ghost">
-          Hire Me
-          <Building2 className="h-5 w-5" />
-        </Button>
+        <Dialog>
+          <DialogTrigger>
+            <Button className="gap-2" variant="ghost">
+              Hire Me
+              <Building2 className="h-5 w-5" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Oops!</DialogTitle>
+              <DialogDescription>
+                I'm not yet accepting any work from outsiders. But I can surely help you if you if we are close enough. For that, contact me on my personal number. You must have it, right?
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
       <div className="grid md:grid-cols-2 place-items-center gap-8">
         {/* IDEA: When the user hovers over the card, a popup bubble will appear on the progressbar aligned to the bottom and animating in from the left */}
