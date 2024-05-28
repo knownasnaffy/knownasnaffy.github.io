@@ -17,7 +17,11 @@ export function ProjectsSection() {
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Projects
         </h1>
-        <a href="https://github.com/knownasnaffy?tab=repositories" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://github.com/knownasnaffy?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Button className="gap-1" variant="ghost">
             View More
             <ArrowUpRight className="h-5 w-5" />
@@ -26,42 +30,83 @@ export function ProjectsSection() {
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 justify-items-stretch gap-8">
         {/* IDEA: When the user hovers over the card, a popup bubble will appear on the progressbar aligned to the bottom and animating in from the left */}
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        <ProjectCard
+          title="Diary Classic"
+          desc="Simple Write-only Diary with TKinter GUI and date and time support"
+          started="Jan 2022"
+          stars={1}
+          tags={["Python", "Tkinter", "Native", "Editor"]}
+          progress={100}
+        />
+        <ProjectCard
+          title="Inner Ink"
+          desc="Diary with Markdown support"
+          started="April 2023"
+          stars={1}
+          tags={[
+            "Tauri",
+            "React",
+            "Native",
+            "Editor",
+            "Rich Text",
+            "Tailwind",
+            "Typescript",
+            "Daisy UI",
+          ]}
+          progress={75}
+        />
+        <ProjectCard
+          title="Portfolio"
+          desc="Single-page web app made with my details"
+          started="27 May 2024"
+          stars={1}
+          tags={["React", "Web", "Tailwind", "Typescript", "Shadcn"]}
+          progress={90}
+        />
       </div>
     </section>
   );
 }
 
-function ProjectCard() {
+function ProjectCard({
+  title,
+  desc,
+  started,
+  stars,
+  tags,
+  progress,
+}: {
+  title: string;
+  desc: string;
+  started: string;
+  stars: number;
+  tags: string[];
+  progress: number;
+}) {
   return (
     <>
-      <Card className="">
+      <Card className="relative">
         <CardHeader>
-          <CardTitle className="tracking-tight font-bold">
-            Project Title
-          </CardTitle>
-          <CardDescription>
-            A lengthy description of a small project.
-          </CardDescription>
+          <CardTitle className="tracking-tight font-bold">{title}</CardTitle>
+          <CardDescription>{desc}</CardDescription>
           <CardDescription className="inline-flex flex-wrap gap-2">
             <span className="inline-flex items-center gap-1">
-              <Calendar className="w-4 h-4" /> Started 11 May 2022
+              <Calendar className="w-4 h-4" /> Started {started}
             </span>
             <span className="inline-flex items-center gap-1">
-              <Star className="w-4 h-4" /> 1 Star
+              <Star className="w-4 h-4" /> {stars} Star(s)
             </span>
           </CardDescription>
         </CardHeader>
-        <CardFooter className="flex flex-wrap gap-2">
-          <Badge>React</Badge>
-          <Badge>Typescript</Badge>
-          <Badge>Tailwind</Badge>
-          <Badge>Shadcn</Badge>
-          <Badge>Whatever</Badge>
+        <CardFooter className="flex flex-wrap gap-2 mb-2">
+          {tags.map((tag) => (
+            <Badge key={tag}>{tag}</Badge>
+          ))}
         </CardFooter>
-        <Progress value={75} className="rounded-t-none h-2" />
+        <Progress
+          value={progress}
+          className="rounded-t-none h-2 absolute bottom-0"
+        />
       </Card>
     </>
   );
