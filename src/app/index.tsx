@@ -11,7 +11,6 @@ export default function HomePage() {
         <InfoSection />
         <ProjectsSection />
         <SkillsSection />
-        {/* My Favorite Templates: Web Backend - Nextjs + Tailwind, Web Frontend - Vite + React + Tailwind + Shadcn + Aceternity */}
         <TemplatesSection />
         <CoursesSection />
         {/* Blog */}

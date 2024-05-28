@@ -7,17 +7,34 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { useState } from "react";
+import { cn } from "@/utils";
 
 export default function TemplatesSection() {
+  const [thanked, setThanked] = useState(false);
   return (
     <section className="min-h-screen py-8 container mx-auto flex flex-col justify-center gap-8 md:snap-start md:snap-always">
       <div className="flex justify-between items-center">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Templates
         </h1>
-        <Button className="gap-2" variant="ghost">
-          Thank Me
-          <Heart className="h-5 w-5" />
+        <Button
+          variant="ghost"
+          onClick={() => setThanked((thanked) => !thanked)}
+          className={cn(
+            thanked && "hover:bg-red-500 hover:text-white",
+            "group"
+          )}
+        >
+          {thanked ? <span>{"Thanked"}</span> : <span>{"Thank Me"}</span>}
+          <Heart
+            className={cn(
+              "h-5 w-5 ml-2",
+              thanked
+                ? "fill-red-500 stroke-red-500 group-hover:fill-white group-hover:stroke-white transition-colors"
+                : ""
+            )}
+          />
         </Button>
       </div>
       <div className="grid md:grid-cols-2 place-items-center gap-8">
