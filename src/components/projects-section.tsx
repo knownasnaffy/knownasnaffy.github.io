@@ -30,6 +30,7 @@ export function ProjectsSection() {
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 justify-items-stretch gap-8">
         {/* IDEA: When the user hovers over the card, a popup bubble will appear on the progressbar aligned to the bottom and animating in from the left */}
+        {/* IDEA: Clicking the card will open a full screen modal with more details, icons, histroy and whatnot */}
         <ProjectCard
           title="Diary Classic"
           desc="Simple Write-only Diary with TKinter GUI and date and time support"
