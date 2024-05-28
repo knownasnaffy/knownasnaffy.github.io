@@ -34,26 +34,35 @@ export default function CoursesSection() {
             <DialogHeader>
               <DialogTitle>Oops!</DialogTitle>
               <DialogDescription>
-                I'm not yet accepting any work from outsiders. But I can surely help you if you if we are close enough. For that, contact me on my personal number. You must have it, right?
+                I'm not yet accepting any work from outsiders. But I can surely
+                help you if you if we are close enough. For that, contact me on
+                my personal number. You must have it, right?
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
         </Dialog>
       </div>
-      <div className="grid md:grid-cols-2 place-items-center gap-8">
+      <div className="grid md:grid-cols-3 place-items-center gap-8">
         <QualificationCard
           course="Secondary Education"
-          org="Central Board of Secondary Education"
+          org="Budha Dal Public School, Patiala - (CBSE)"
           duration="2020 - 2022"
           subjects="English, Maths, Science, Social Studies, Punjabi, Hindi, Information Technology"
           percentage={86.3}
         />
         <QualificationCard
           course="Senior Secondary Education"
-          org="Central Board of Secondary Education"
+          org="Budha Dal Public School, Patiala - (CBSE)"
           duration="2022 - 2024"
           subjects="English, Maths, Physics, Chemistry, Informatics Practice"
           percentage={61.2}
+        />
+        <QualificationCard
+          course="B.Tech - Computer Science Engineering"
+          org="Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib"
+          duration="2024 - 2028"
+          subjects="Maths, Physics, Applied Science"
+          progress={0}
         />
       </div>
     </section>
@@ -67,6 +76,7 @@ function QualificationCard({
   subjects,
   cgpa,
   percentage,
+  progress,
 }: {
   course: string;
   org: string;
@@ -74,6 +84,7 @@ function QualificationCard({
   subjects: string;
   cgpa?: number;
   percentage?: number;
+  progress?: number;
 }) {
   return (
     <Card className="h-full">
@@ -92,10 +103,10 @@ function QualificationCard({
         </div>
         <div className="place-self-start">
           <h4 className="text-lg font-semibold">
-            {percentage ? "Percentage" : "CGPA"}
+            {percentage ? "Percentage" : cgpa ? "CGPA" : "Progress"}
           </h4>
           <p className="text-muted-foreground">
-            {percentage ? percentage + "%" : cgpa}
+            {percentage ? percentage + "%" : cgpa ? cgpa : progress + "%"}
           </p>
         </div>
       </CardFooter>
