@@ -17,10 +17,12 @@ export function ProjectsSection() {
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Projects
         </h1>
-        <Button className="gap-1" variant="ghost">
-          View More
-          <ArrowUpRight className="h-5 w-5" />
-        </Button>
+        <a href="https://github.com/knownasnaffy?tab=repositories" target="_blank" rel="noopener noreferrer">
+          <Button className="gap-1" variant="ghost">
+            View More
+            <ArrowUpRight className="h-5 w-5" />
+          </Button>
+        </a>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 justify-items-stretch gap-8">
         {/* IDEA: When the user hovers over the card, a popup bubble will appear on the progressbar aligned to the bottom and animating in from the left */}
