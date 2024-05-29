@@ -86,7 +86,7 @@ function ProjectCard({
 }) {
 	return (
 		<>
-			<Card className='relative'>
+			<Card className='relative hover:shadow-2xl hover:shadow-background/50 transition-all duration-300 ease-in-out'>
 				<CardHeader>
 					<CardTitle className='tracking-tight font-bold'>{title}</CardTitle>
 					<CardDescription>{desc}</CardDescription>
