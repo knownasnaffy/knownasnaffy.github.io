@@ -743,7 +743,7 @@ export function SkillsSection() {
 }
 function SkillCard({ img }: { img?: React.ReactNode }) {
 	return (
-		<Card className='aspect-square p-4 w-fit group [&_svg]:w-12 hover:[&_svg]:grayscale [&_svg]:transition-all [&_svg]:ease-in-out hover:[&_svg]:scale-110 [&_svg]:duration-200'>
+		<Card className='aspect-square p-4 w-fit group [&_svg]:w-12 hover:grayscale transition-all ease-in-out duration-200 hover:shadow-2xl hover:shadow-background/50'>
 			{img}
 		</Card>
 	)
