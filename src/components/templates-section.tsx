@@ -23,16 +23,15 @@ export default function TemplatesSection() {
 					onClick={() => setThanked(thanked => !thanked)}
 					className={cn(
 						thanked && 'hover:bg-red-500 hover:text-white',
-						'group',
+						'group'
 					)}
 				>
 					{thanked ? <span>{'Thanked'}</span> : <span>{'Thank Me'}</span>}
 					<Heart
 						className={cn(
 							'h-5 w-5 ml-2',
-							thanked
-								? 'fill-red-500 stroke-red-500 group-hover:fill-white group-hover:stroke-white transition-colors'
-								: '',
+							thanked &&
+								'fill-red-500 stroke-red-500 group-hover:fill-white group-hover:stroke-white transition-colors'
 						)}
 					/>
 				</Button>
@@ -43,6 +42,7 @@ export default function TemplatesSection() {
 					name='Web Frontend'
 					purpose='To give a nice looking model to the application'
 					packages='Vite, Bun, React, Typescript, Tailwind, Shadcn'
+					link='https://github.com/knownasnaffy/web-frontend'
 					icon={
 						<svg viewBox='0 0 128 128'>
 							<defs>
@@ -87,6 +87,7 @@ export default function TemplatesSection() {
 					name='Web Backend'
 					purpose='For building the circuits in the application'
 					packages='Next.js, Node.js, Typescript, Tailwind'
+					link='https://github.com/knownasnaffy/web-frontend'
 					icon={
 						<svg viewBox='0 0 128 128'>
 							<path d='M64 0A64 64 0 0 0 0 64a64 64 0 0 0 64 64 64 64 0 0 0 35.508-10.838L47.014 49.34v40.238H38.4V38.4h10.768l57.125 73.584A64 64 0 0 0 128 64 64 64 0 0 0 64 0Zm17.777 38.4h8.534v48.776L81.777 75.97Zm24.18 73.92-.111.096a64 64 0 0 0 .111-.096z'></path>
@@ -103,25 +104,29 @@ function TemplateCard({
 	purpose,
 	packages,
 	icon,
+	link,
 }: {
 	name: string
 	purpose: string
 	packages: string
 	icon: React.ReactNode
+	link?: string
 }) {
 	return (
-		<Card className='h-full flex [&_svg]:w-32 pr-6'>
-			<div>
-				<CardHeader>
-					<CardTitle>{name}</CardTitle>
-					<CardDescription>{purpose}</CardDescription>
-				</CardHeader>
-				<CardFooter className='flex flex-col items-start'>
-					<h4 className='text-lg font-semibold'>Packages</h4>
-					<p className='text-muted-foreground'>{packages}</p>
-				</CardFooter>
-			</div>
-			{icon}
-		</Card>
+		<a href={link}>
+			<Card className='h-full flex [&_svg]:w-32 pr-6 hover:shadow-2xl hover:shadow-background/50 transition-all ease-in-out duration-300'>
+				<div>
+					<CardHeader>
+						<CardTitle>{name}</CardTitle>
+						<CardDescription>{purpose}</CardDescription>
+					</CardHeader>
+					<CardFooter className='flex flex-col items-start'>
+						<h4 className='text-lg font-semibold'>Packages</h4>
+						<p className='text-muted-foreground'>{packages}</p>
+					</CardFooter>
+				</div>
+				{icon}
+			</Card>
+		</a>
 	)
 }
