@@ -58,10 +58,10 @@ export default function CoursesSection() {
 					percentage={61.2}
 				/>
 				<QualificationCard
-					course='B.Tech - Computer Science Engineering'
-					org='Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib'
+					course='Bachelors of Technology'
+					org='BBSBEC, Fatehgarh Sahib'
 					duration='2024 - 2028'
-					subjects='Maths, Physics, Applied Science'
+					major='Computer Science and Engineering'
 					progress={0}
 				/>
 			</div>
@@ -74,6 +74,7 @@ function QualificationCard({
 	org,
 	duration,
 	subjects,
+	major,
 	cgpa,
 	percentage,
 	progress,
@@ -81,7 +82,8 @@ function QualificationCard({
 	course: string
 	org: string
 	duration: string
-	subjects: string
+	subjects?: string
+	major?: string
 	cgpa?: number
 	percentage?: number
 	progress?: number
@@ -98,8 +100,8 @@ function QualificationCard({
 			</CardHeader>
 			<CardFooter className='grid sm:grid-cols-2 gap-4'>
 				<div>
-					<h4 className='text-lg font-semibold'>Subjects</h4>
-					<p className='text-muted-foreground'>{subjects}</p>
+					<h4 className='text-lg font-semibold'>{subjects ? 'Subjects' : 'Major'}</h4>
+					<p className='text-muted-foreground'>{subjects || major}</p>
 				</div>
 				<div className='place-self-start'>
 					<h4 className='text-lg font-semibold'>
