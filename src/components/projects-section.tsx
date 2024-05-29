@@ -1,5 +1,11 @@
 import { Button } from '@/components/ui/button'
-import { ArrowUpRight, Calendar, Star } from 'lucide-react'
+import {
+	ArrowUpRight,
+	BugIcon,
+	Calendar,
+	ForkliftIcon,
+	StarIcon,
+} from 'lucide-react'
 import {
 	Card,
 	CardHeader,
@@ -9,6 +15,16 @@ import {
 } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
+import {
+	Dialog,
+	DialogHeader,
+	DialogTrigger,
+	DialogContent,
+	DialogDescription,
+	DialogTitle,
+} from './ui/dialog'
+import { Separator } from './ui/separator'
+import { cn } from '@/utils'
 
 export function ProjectsSection() {
 	return (
@@ -34,10 +50,11 @@ export function ProjectsSection() {
 				<ProjectCard
 					title='Diary Classic'
 					desc='Simple Write-only Diary with TKinter GUI and date and time support'
-					started='Jan 2022'
 					stars={1}
+					started='Jan 2022'
 					tags={['Python', 'Tkinter', 'Native', 'Editor']}
 					progress={100}
+					status='archived'
 				/>
 				<ProjectCard
 					title='Inner Ink'
@@ -55,6 +72,7 @@ export function ProjectsSection() {
 						'Daisy UI',
 					]}
 					progress={75}
+					status='wip'
 				/>
 				<ProjectCard
 					title='Portfolio'
@@ -63,6 +81,7 @@ export function ProjectsSection() {
 					stars={1}
 					tags={['React', 'Web', 'Tailwind', 'Typescript', 'Shadcn']}
 					progress={90}
+					status='wip'
 				/>
 			</div>
 		</section>
@@ -76,39 +95,81 @@ function ProjectCard({
 	stars,
 	tags,
 	progress,
+	status,
 }: {
-	title: string
-	desc: string
-	started: string
-	stars: number
+	title?: string
+	desc?: string
+	started?: string
+	stars?: number
 	tags: string[]
 	progress: number
+	status?: 'archived' | 'wip' | 'completed'
 }) {
 	return (
 		<>
-			<Card className='relative hover:shadow-2xl hover:shadow-background/50 transition-all duration-300 ease-in-out'>
-				<CardHeader>
-					<CardTitle className='tracking-tight font-bold'>{title}</CardTitle>
-					<CardDescription>{desc}</CardDescription>
-					<CardDescription className='inline-flex flex-wrap gap-2'>
-						<span className='inline-flex items-center gap-1'>
-							<Calendar className='w-4 h-4' /> Started {started}
-						</span>
-						<span className='inline-flex items-center gap-1'>
-							<Star className='w-4 h-4' /> {stars} Star(s)
-						</span>
-					</CardDescription>
-				</CardHeader>
-				<CardFooter className='flex flex-wrap gap-2 mb-2'>
-					{tags.map(tag => (
-						<Badge key={tag}>{tag}</Badge>
-					))}
-				</CardFooter>
-				<Progress
-					value={progress}
-					className='rounded-t-none h-2 absolute bottom-0'
-				/>
-			</Card>
+			<Dialog>
+				<DialogTrigger asChild>
+					<Card className='relative hover:shadow-2xl hover:shadow-background/50 transition-all duration-300 ease-in-out hover:cursor-pointer'>
+						<CardHeader>
+							<CardTitle className='tracking-tight font-bold'>
+								{title}
+							</CardTitle>
+							<CardDescription>{desc}</CardDescription>
+							<CardDescription className='inline-flex items-center gap-1'>
+								<Calendar className='w-4 h-4' /> Started {started}
+							</CardDescription>
+						</CardHeader>
+						<CardFooter className='flex flex-wrap gap-2 mb-2'>
+							{tags.map(tag => (
+								<Badge key={tag}>{tag}</Badge>
+							))}
+						</CardFooter>
+						<Progress
+							value={progress}
+							className='rounded-t-none h-2 absolute bottom-0'
+						/>
+					</Card>
+				</DialogTrigger>
+				<DialogContent className='max-w-xl'>
+					<DialogHeader>
+						<DialogTitle>{title}</DialogTitle>
+						<DialogDescription>{desc}</DialogDescription>
+					</DialogHeader>
+					<div className='border-t pt-4'>
+						<div className='grid grid-cols-[1fr_auto] items-center gap-4'>
+							<div className='flex items-center gap-2 text-sm text-muted-foreground'>
+								<StarIcon className='h-4 w-4' />
+								<span>{stars}</span>
+								<Separator className='h-4' orientation='vertical' />
+								<ForkliftIcon className='h-4 w-4' />
+								<span>2.5k</span>
+								<Separator className='h-4' orientation='vertical' />
+								<BugIcon className='h-4 w-4' />
+								<span>150</span>
+							</div>
+							<Button size='sm' variant='outline'>
+								View on GitHub
+							</Button>
+						</div>
+					</div>
+					<div className='border-t pt-4 flex items-center'>
+						<span className='font-semibold mr-2'>Status:</span>{' '}
+						{status === 'archived'
+							? 'Archived'
+							: status === 'completed'
+							? 'Completed'
+							: 'Work in Progress'}
+						<Progress
+							value={progress}
+							className={cn(
+								'w-full max-w-64 ml-auto h-2',
+								status === 'archived' && '[&_div]:bg-yellow-500',
+								status==='completed' && '[&_div]:bg-green-500'
+							)}
+						></Progress>
+					</div>
+				</DialogContent>
+			</Dialog>
 		</>
 	)
 }
