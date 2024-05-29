@@ -1,9 +1,16 @@
 import { Button } from '@/components/ui/button'
 import {
+	Archive,
 	ArrowUpRight,
+	BookOpen,
 	BugIcon,
 	Calendar,
+	CircleCheck,
+	Construction,
 	ForkliftIcon,
+	GitFork,
+	Link2,
+	Scale,
 	StarIcon,
 } from 'lucide-react'
 import {
@@ -130,43 +137,119 @@ function ProjectCard({
 						/>
 					</Card>
 				</DialogTrigger>
-				<DialogContent className='max-w-xl'>
-					<DialogHeader>
-						<DialogTitle>{title}</DialogTitle>
-						<DialogDescription>{desc}</DialogDescription>
-					</DialogHeader>
-					<div className='border-t pt-4'>
-						<div className='grid grid-cols-[1fr_auto] items-center gap-4'>
-							<div className='flex items-center gap-2 text-sm text-muted-foreground'>
-								<StarIcon className='h-4 w-4' />
-								<span>{stars}</span>
-								<Separator className='h-4' orientation='vertical' />
-								<ForkliftIcon className='h-4 w-4' />
-								<span>2.5k</span>
-								<Separator className='h-4' orientation='vertical' />
-								<BugIcon className='h-4 w-4' />
-								<span>150</span>
-							</div>
+				<DialogContent className='max-w-3xl' closable={false}>
+					<DialogHeader className='flex-row gap-4 items-center'>
+						<img
+							src='https://github.com/knownasnaffy/inner-ink/blob/main/app/frontend/public/logo.png?raw=true'
+							alt='inner ink'
+							className='h-10'
+						/>
+						<div>
+							<DialogTitle>{title}</DialogTitle>
+							<DialogDescription>{desc}</DialogDescription>
+						</div>
+						<a href='#' className='ml-auto'>
 							<Button size='sm' variant='outline'>
 								View on GitHub
 							</Button>
+						</a>
+					</DialogHeader>
+					<Separator />
+					<div className='flex gap-4'>
+						<div className='grow space-y-4'></div>
+						<Separator orientation='vertical' />
+						<div className='space-y-4 w-64'>
+							<div className='flex flex-col gap-2'>
+								<span
+									className={cn(
+										'flex items-center gap-2 text-primary [&_svg]:w-4 [&_svg]:h-4',
+										status === 'archived' && 'text-yellow-500',
+										status === 'completed' && 'text-green-500'
+									)}
+								>
+									{status === 'archived' ? (
+										<Archive />
+									) : status === 'completed' ? (
+										<CircleCheck />
+									) : (
+										<Construction />
+									)}
+									<Progress
+										value={progress}
+										className={cn(
+											'w-full h-2',
+											status === 'archived' && '[&_div]:bg-yellow-500',
+											status === 'completed' && '[&_div]:bg-green-500'
+										)}
+									/>
+								</span>
+								<Button
+									variant='link'
+									className='justify-start px-0 h-fit py-0'
+								>
+									<Link2 className='w-4 h-4 mr-2' />
+									inner-ink.tk
+								</Button>
+								<Button
+									variant='link'
+									className='justify-start text-muted-foreground px-0 h-fit py-0'
+								>
+									<Scale className='w-4 h-4 mr-2' />
+									MIT
+								</Button>
+								<Button
+									variant='link'
+									className='justify-start px-0 h-fit py-0 text-muted-foreground'
+								>
+									<BookOpen className='w-4 h-4 mr-2' />
+									Readme
+								</Button>
+								<Button
+									variant='link'
+									className='justify-start px-0 h-fit py-0 text-muted-foreground'
+								>
+									<StarIcon className='h-4 w-4 mr-2' />{stars} Star
+								</Button>
+								<Button
+									variant='link'
+									className='justify-start px-0 h-fit py-0 text-muted-foreground'
+								>
+									<ForkliftIcon className='h-4 w-4 mr-2' />
+									12 Pull Requests
+								</Button>
+								<Button
+									variant='link'
+									className='justify-start px-0 h-fit py-0 text-muted-foreground'
+								>
+									<BugIcon className='h-4 w-4 mr-2' />1 Issue
+								</Button>
+								<Button
+									variant='link'
+									className='justify-start px-0 h-fit py-0 text-muted-foreground'
+								>
+									<GitFork className='h-4 w-4 mr-2' />2 Forks
+								</Button>
+							</div>
+							<div className='space-y-3'>
+								<h5 className='font-semibold'>Languages:</h5>
+								<div className='flex flex-wrap gap-2'>
+									<Badge variant='secondary'>Typescript: 75%</Badge>
+									<Badge variant='secondary'>HTML: 1%</Badge>
+									<Badge variant='secondary'>CSS: 1%</Badge>
+									<Badge variant='secondary'>Javascript: 1%</Badge>
+								</div>
+							</div>
+							<div className='space-y-3'>
+								<h5 className='font-semibold'>Tags:</h5>
+								<div className='flex flex-wrap gap-2'>
+									<Badge variant='secondary'>React</Badge>
+									<Badge variant='secondary'>Typescript</Badge>
+									<Badge variant='secondary'>Tailwind</Badge>
+									<Badge variant='secondary'>Daisy UI</Badge>
+									<Badge variant='secondary'>Desktop App</Badge>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div className='border-t pt-4 flex items-center'>
-						<span className='font-semibold mr-2'>Status:</span>{' '}
-						{status === 'archived'
-							? 'Archived'
-							: status === 'completed'
-							? 'Completed'
-							: 'Work in Progress'}
-						<Progress
-							value={progress}
-							className={cn(
-								'w-full max-w-64 ml-auto h-2',
-								status === 'archived' && '[&_div]:bg-yellow-500',
-								status==='completed' && '[&_div]:bg-green-500'
-							)}
-						></Progress>
 					</div>
 				</DialogContent>
 			</Dialog>
