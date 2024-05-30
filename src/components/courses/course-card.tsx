@@ -29,7 +29,7 @@ export function CourseCard({
 					{duration}
 				</CardDescription>
 			</CardHeader>
-			<CardFooter className='grid sm:grid-cols-2 gap-4'>
+			<CardFooter className='grid lg:grid-cols-2 gap-4'>
 				<div>
 					<h4 className='text-lg font-semibold'>
 						{subjects ? 'Subjects' : 'Major'}

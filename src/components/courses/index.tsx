@@ -36,7 +36,7 @@ export default function CoursesSection() {
 					</DialogContent>
 				</Dialog>
 			</div>
-			<div className='grid md:grid-cols-3 place-items-center gap-8'>
+			<div className='grid lg:grid-cols-3 place-items-stretch gap-8'>
 				<CourseCard
 					course='Secondary Education'
 					org='Budha Dal Public School, Patiala - (CBSE)'
