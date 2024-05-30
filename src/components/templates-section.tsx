@@ -37,7 +37,6 @@ export default function TemplatesSection() {
 				</Button>
 			</div>
 			<div className='grid md:grid-cols-2 place-items-center gap-8'>
-				{/* IDEA: When the user hovers over the card, a popup bubble will appear on the progressbar aligned to the bottom and animating in from the left */}
 				<TemplateCard
 					name='Web Frontend'
 					purpose='To give a nice looking model to the application'
