@@ -13,6 +13,7 @@ const config = {
 		container: {
 			center: true,
 			padding: '2rem',
+			// FIXME: Custom screen size like max-[1024px] are not working
 			screens: {
 				'2xl': '1400px',
 			},
