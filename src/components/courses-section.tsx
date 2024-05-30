@@ -24,7 +24,7 @@ export default function CoursesSection() {
 					Courses
 				</h1>
 				<Dialog>
-					<DialogTrigger>
+					<DialogTrigger asChild>
 						<Button className='gap-2' variant='ghost'>
 							Hire Me
 							<Building2 className='h-5 w-5' />
