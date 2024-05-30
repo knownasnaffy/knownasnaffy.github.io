@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+# KnownAsNaffy Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website built with React and TypeScript.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [x] A responsive design that adapts to various screen sizes and devices.
+- [x] A simple and clean user interface with a focus on typography and minimalism.
+- [x] A section for showcasing projects, with details such as project name, description, and links to live demos and source code as well as the reason for the startup of the project.
+<!-- - [x] A section for showcasing courses, with details such as course name, description, and links to course pages. -->
+- [x] A section for showcasing skills and certifications.
+- [ ] A section for showcasing blog posts, with details such as post title, description, and link to live post.
+- [ ] A section for showcasing code snippets, with details such as code language, code snippet, and link to live codepen.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Shadcn UI (Radix UI under the hood)
 
-- Configure the top-level `parserOptions` property like this:
+## How to Run Locally
 
-```js
-export default {
-	// other rules...
-	parserOptions: {
-		ecmaVersion: 'latest',
-		sourceType: 'module',
-		project: ['./tsconfig.json', './tsconfig.node.json'],
-		tsconfigRootDir: __dirname,
-	},
-}
-```
+1. Clone this repository to your local machine.
+2. Run `bun install` to install dependencies.
+3. Run `bun run dev` to start the development server.
+4. Open [http://localhost:5173](http://localhost:5173) in your web browser.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
