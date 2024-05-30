@@ -75,6 +75,35 @@ export function ProjectsSection() {
 					targetRepo='knownasnaffy/inner-ink'
 					icon_url='https://github.com/knownasnaffy/inner-ink/blob/main/app/frontend/public/logo.png?raw=true'
 					// web_url='https://inner-ink.vercel.app/'
+					history={
+						<>
+							<p>
+								In August 2023, I got a new laptop, finally allowing me to try
+								out software that my old PC couldn't handle. One of my goals was
+								to upgrade the Diary app I had previously made using Python and
+								Tkinter. I explored several options, starting with Electron, but
+								I found it difficult to grasp. Next, I attempted to create a
+								Progressive Web App (PWA) using a guide from web.dev, but it had
+								limitations with data storage.
+							</p>
+							<p>
+								Eventually, I decided on Tauri. It was lightweight, easy to use,
+								and seemed like a good fit despite some functionality gaps due
+								to its recent development status. I started by working on a
+								basic editor, which I later converted into a rich-text editor.
+								However, during this process, I broke the search functionality
+								because the data, stored as a JSON string, also contained the
+								editor state. This issue can be resolved by saving the data in
+								Markdown format, but it requires additional work.
+							</p>
+							<p>
+								Another challenge is security. While I can easily add password
+								protection to the interface, implementing database encryption is
+								beyond my basic knowledge of Rust. Therefore, I need to wait
+								until Tauri supports an encrypted database like SQLCipher.
+							</p>
+						</>
+					}
 				/>
 				<ProjectCard
 					title='Portfolio'
