@@ -31,7 +31,6 @@ export function ProjectsSection() {
 				/>
 				<ProjectCard
 					title='Inner Ink'
-					desc='Diary with Markdown support'
 					tags={[
 						'Tauri',
 						'React',
@@ -48,7 +47,6 @@ export function ProjectsSection() {
 				/>
 				<ProjectCard
 					title='Portfolio'
-					desc='Single-page web app made with my details'
 					tags={['React', 'Web', 'Tailwind', 'Typescript', 'Shadcn']}
 					progress={90}
 					status='wip'

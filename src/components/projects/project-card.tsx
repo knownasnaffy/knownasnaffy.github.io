@@ -43,21 +43,25 @@ const requestOptions = {
 	method: 'GET',
 	headers: headers,
 }
-export function ProjectCard({
-	title,
-	tags,
-	progress,
-	// TODO: Remove status and use github archived option as well as progress percentage to set achieve same functionality. For eg. if progress percentage is 100, status is 'completed'
-	status,
-	targetRepo,
-}: {
+
+type ProjectCardState = {
 	title?: string
 	desc?: string
 	tags: string[]
 	progress: number
 	status?: 'archived' | 'wip' | 'completed'
 	targetRepo: string
-}) {
+}
+
+export function ProjectCard({
+	title,
+	desc,
+	tags,
+	progress,
+	// TODO: Remove status and use github archived option as well as progress percentage to set achieve same functionality. For eg. if progress percentage is 100, status is 'completed'
+	status,
+	targetRepo,
+}: ProjectCardState) {
 	type RepoDataType = {
 		description?: string
 		created_at?: string
@@ -133,7 +137,7 @@ export function ProjectCard({
 							<CardTitle className='tracking-tight font-bold'>
 								{title}
 							</CardTitle>
-							<CardDescription>{repoData.description}</CardDescription>
+							<CardDescription>{desc || repoData.description}</CardDescription>
 							<CardDescription className='inline-flex items-center gap-1'>
 								<Calendar className='w-4 h-4' /> Started {repoData.created_at}
 							</CardDescription>
@@ -161,7 +165,7 @@ export function ProjectCard({
 						/>
 						<div className='text-left'>
 							<DialogTitle>{title}</DialogTitle>
-							<DialogDescription>{repoData.description}</DialogDescription>
+							<DialogDescription>{desc || repoData.description}</DialogDescription>
 						</div>
 						<a href={'https://github.com/' + targetRepo} className='ml-auto'>
 							<Button size='sm' variant='outline' className='max-sm:px-2'>
