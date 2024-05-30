@@ -30,8 +30,8 @@ import {
 	DialogDescription,
 	DialogTitle,
 	DialogClose,
-} from './ui/dialog'
-import { Separator } from './ui/separator'
+} from '../ui/dialog'
+import { Separator } from '../ui/separator'
 import { cn } from '@/utils'
 import { useEffect, useState } from 'react'
 

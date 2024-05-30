@@ -1,8 +1,8 @@
-import CoursesSection from '@/components/courses-section'
+import CoursesSection from '@/components/courses'
 import { InfoSection } from '../components/info-section'
-import { ProjectsSection } from '../components/projects-section'
-import { SkillsSection } from '../components/skills-section'
-import TemplatesSection from '@/components/templates-section'
+import { ProjectsSection } from '../components/projects'
+import { SkillsSection } from '../components/skills'
+import TemplatesSection from '@/components/templates'
 
 export default function HomePage() {
 	return (
