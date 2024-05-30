@@ -2,7 +2,7 @@ import CoursesSection from '@/components/courses'
 import { InfoSection } from '../components/info-section'
 import { ProjectsSection } from '../components/projects'
 import { SkillsSection } from '../components/skills'
-import TemplatesSection from '@/components/templates'
+// import TemplatesSection from '@/components/templates'
 
 export default function HomePage() {
 	return (
@@ -11,9 +11,10 @@ export default function HomePage() {
 				<InfoSection />
 				<ProjectsSection />
 				<SkillsSection />
-				<TemplatesSection />
+				{/* Removed this section because it didn't fit well with the rest. Will merge it with the blogs section or the code snippets section later */}
+				{/* <TemplatesSection /> */}
 				<CoursesSection />
-				{/* Blog */}
+				{/* <Blog /> */}
 			</div>
 		</>
 	)
