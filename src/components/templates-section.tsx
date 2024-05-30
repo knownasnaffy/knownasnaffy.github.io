@@ -23,7 +23,7 @@ export default function TemplatesSection() {
 					onClick={() => setThanked(thanked => !thanked)}
 					className={cn(
 						thanked && 'hover:bg-red-500 hover:text-white',
-						'group'
+						'group',
 					)}
 				>
 					{thanked ? <span>{'Thanked'}</span> : <span>{'Thank Me'}</span>}
@@ -31,7 +31,7 @@ export default function TemplatesSection() {
 						className={cn(
 							'h-5 w-5 ml-2',
 							thanked &&
-								'fill-red-500 stroke-red-500 group-hover:fill-white group-hover:stroke-white transition-colors'
+								'fill-red-500 stroke-red-500 group-hover:fill-white group-hover:stroke-white transition-colors',
 						)}
 					/>
 				</Button>

@@ -7,7 +7,6 @@ import {
 	Calendar,
 	CircleCheck,
 	Construction,
-	ForkliftIcon,
 	GitFork,
 	Link2,
 	Scale,
@@ -34,6 +33,7 @@ import {
 } from './ui/dialog'
 import { Separator } from './ui/separator'
 import { cn } from '@/utils'
+import { useEffect, useState } from 'react'
 
 export function ProjectsSection() {
 	return (
@@ -55,21 +55,17 @@ export function ProjectsSection() {
 			</div>
 			<div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-stretch gap-8'>
 				{/* IDEA: When the user hovers over the card, a popup bubble will appear on the progressbar aligned to the bottom and animating in from the left */}
-				{/* IDEA: Clicking the card will open a full screen modal with more details, icons, histroy and whatnot */}
 				<ProjectCard
 					title='Diary Classic'
 					desc='Simple Write-only Diary with TKinter GUI and date and time support'
-					stars={1}
-					started='Jan 2022'
 					tags={['Python', 'Tkinter', 'Native', 'Editor']}
 					progress={100}
 					status='archived'
+					targetRepo='knownasnaffy/diary-classic'
 				/>
 				<ProjectCard
 					title='Inner Ink'
 					desc='Diary with Markdown support'
-					started='April 2023'
-					stars={1}
 					tags={[
 						'Tauri',
 						'React',
@@ -82,38 +78,114 @@ export function ProjectsSection() {
 					]}
 					progress={75}
 					status='wip'
+					targetRepo='knownasnaffy/inner-ink'
 				/>
 				<ProjectCard
 					title='Portfolio'
 					desc='Single-page web app made with my details'
-					started='27 May 2024'
-					stars={1}
 					tags={['React', 'Web', 'Tailwind', 'Typescript', 'Shadcn']}
 					progress={90}
 					status='wip'
+					targetRepo='knownasnaffy/knownasnaffy.github.io'
 				/>
 			</div>
 		</section>
 	)
 }
 
+// TODO: Move this ugly thing to a new file
+const headers = new Headers()
+import.meta.env.VITE_GITHUB_TOKEN &&
+	headers.set('Authorization', 'Bearer ' + import.meta.env.VITE_GITHUB_TOKEN)
+const requestOptions = {
+	method: 'GET',
+	headers: headers,
+}
+
 function ProjectCard({
 	title,
-	desc,
-	started,
-	stars,
 	tags,
 	progress,
+	// TODO: Remove status and use github archived option as well as progress percentage to set achieve same functionality. For eg. if progress percentage is 100, status is 'completed'
 	status,
+	targetRepo,
 }: {
 	title?: string
 	desc?: string
-	started?: string
-	stars?: number
 	tags: string[]
 	progress: number
 	status?: 'archived' | 'wip' | 'completed'
+	targetRepo: string
 }) {
+	const [repo, setRepo] = useState<{
+		name: string
+		description: string | null
+		created_at: string
+		stargazers_count: number
+		forks: number
+		issues: number
+		languages: Record<string, any>
+		license?: string
+		license_url?: string
+	}>({
+		name: '',
+		description: null,
+		created_at: '',
+		stargazers_count: 0,
+		forks: 0,
+		issues: 0,
+		languages: {},
+	})
+
+	useEffect(() => {
+		if (!targetRepo) return
+
+		// fetching repo details
+		fetch(`https://api.github.com/repos/${targetRepo}`, requestOptions)
+			.then(async res => {
+				const data = await res.json()
+
+				// fetching languages and there parts in the repo
+				const languagesResponse = await fetch(
+					data.languages_url,
+					requestOptions,
+				)
+				const languages = await languagesResponse.json()
+
+				// the total of all the numbers in the languages record
+				const total = Object.values(languages).reduce(
+					(acc, value) => (acc as number) + (value as number),
+					0,
+				) as number
+
+				// converting the numbers record to percentages record
+				const languagePercentages = Object.fromEntries(
+					Object.entries(languages).map(([language, percentage]) => [
+						language,
+						(((percentage as any as number) / total) * 100).toFixed(2),
+					]),
+				)
+
+				// setting repo details
+				setRepo(repo => ({
+					...repo,
+					name: data.name,
+					description: data.description ?? null,
+					created_at: new Intl.DateTimeFormat('en-US', {
+						month: 'long',
+						year: 'numeric',
+					}).format(new Date(data.created_at)),
+					stargazers_count: data.stargazers_count,
+					forks: data.forks,
+					issues: data.open_issues_count,
+					languages: languagePercentages,
+					license: data.license?.name,
+					license_url: data.license?.url,
+				}))
+			})
+			.catch(err => console.error(err))
+	}, [targetRepo])
+
 	return (
 		<>
 			<Dialog>
@@ -123,9 +195,9 @@ function ProjectCard({
 							<CardTitle className='tracking-tight font-bold'>
 								{title}
 							</CardTitle>
-							<CardDescription>{desc}</CardDescription>
+							<CardDescription>{repo.description}</CardDescription>
 							<CardDescription className='inline-flex items-center gap-1'>
-								<Calendar className='w-4 h-4' /> Started {started}
+								<Calendar className='w-4 h-4' /> Started {repo.created_at}
 							</CardDescription>
 						</CardHeader>
 						<CardFooter className='flex flex-wrap gap-2 mb-2'>
@@ -148,9 +220,9 @@ function ProjectCard({
 						/>
 						<div>
 							<DialogTitle>{title}</DialogTitle>
-							<DialogDescription>{desc}</DialogDescription>
+							<DialogDescription>{repo.description}</DialogDescription>
 						</div>
-						<a href='#' className='ml-auto'>
+						<a href={'https://github.com/' + targetRepo} className='ml-auto'>
 							<Button size='sm' variant='outline'>
 								View on GitHub
 							</Button>
@@ -171,7 +243,7 @@ function ProjectCard({
 									className={cn(
 										'flex items-center gap-2 text-primary [&_svg]:w-4 [&_svg]:h-4',
 										status === 'archived' && 'text-yellow-500',
-										status === 'completed' && 'text-green-500'
+										status === 'completed' && 'text-green-500',
 									)}
 								>
 									{status === 'archived' ? (
@@ -186,7 +258,7 @@ function ProjectCard({
 										className={cn(
 											'w-full h-2',
 											status === 'archived' && '[&_div]:bg-yellow-500',
-											status === 'completed' && '[&_div]:bg-green-500'
+											status === 'completed' && '[&_div]:bg-green-500',
 										)}
 									/>
 								</span>
@@ -197,54 +269,68 @@ function ProjectCard({
 									<Link2 className='w-4 h-4 mr-2' />
 									inner-ink.tk
 								</Button>
-								<Button
-									variant='link'
-									className='justify-start text-muted-foreground px-0 h-fit py-0'
-								>
-									<Scale className='w-4 h-4 mr-2' />
-									MIT
-								</Button>
-								<Button
-									variant='link'
-									className='justify-start px-0 h-fit py-0 text-muted-foreground'
-								>
-									<BookOpen className='w-4 h-4 mr-2' />
-									Readme
-								</Button>
-								<Button
-									variant='link'
-									className='justify-start px-0 h-fit py-0 text-muted-foreground'
-								>
-									<StarIcon className='h-4 w-4 mr-2' />
-									{stars} Star
-								</Button>
-								<Button
-									variant='link'
-									className='justify-start px-0 h-fit py-0 text-muted-foreground'
-								>
-									<ForkliftIcon className='h-4 w-4 mr-2' />
-									12 Pull Requests
-								</Button>
-								<Button
-									variant='link'
-									className='justify-start px-0 h-fit py-0 text-muted-foreground'
-								>
-									<BugIcon className='h-4 w-4 mr-2' />1 Issue
-								</Button>
-								<Button
-									variant='link'
-									className='justify-start px-0 h-fit py-0 text-muted-foreground'
-								>
-									<GitFork className='h-4 w-4 mr-2' />2 Forks
-								</Button>
+								<a href={'https://github.com/' + targetRepo + '/#readme'}>
+									<Button
+										variant='link'
+										className='justify-start px-0 h-fit py-0 text-muted-foreground'
+									>
+										<BookOpen className='w-4 h-4 mr-2' />
+										Readme
+									</Button>
+								</a>
+								{repo.license && (
+									<a href={repo.license_url}>
+										<Button
+											variant='link'
+											className='justify-start px-0 h-fit py-0 text-muted-foreground'
+										>
+											<Scale className='w-4 h-4 mr-2' />
+											{repo.license}
+										</Button>
+									</a>
+								)}
+								<a href={'https://github.com/' + targetRepo + '/stargazers'}>
+									<Button
+										variant='link'
+										className='justify-start px-0 h-fit py-0 text-muted-foreground'
+									>
+										<StarIcon className='h-4 w-4 mr-2' />
+										{repo.stargazers_count}{' '}
+										{repo.stargazers_count > 1 ? 'Stars' : 'Star'}
+									</Button>
+								</a>
+								<a href={'https://github.com/' + targetRepo + '/issues'}>
+									<Button
+										variant='link'
+										className='justify-start px-0 h-fit py-0 text-muted-foreground'
+									>
+										<BugIcon className='h-4 w-4 mr-2' />
+										{repo.issues} {repo.issues > 1 ? 'Issues' : 'Issue'}
+									</Button>
+								</a>
+								<a href={'https://github.com/' + targetRepo + '/forks'}>
+									<Button
+										variant='link'
+										className='justify-start px-0 h-fit py-0 text-muted-foreground'
+									>
+										<GitFork className='h-4 w-4 mr-2' />
+										{repo.forks} {repo.forks > 1 ? 'Forks' : 'Fork'}
+									</Button>
+								</a>
 							</div>
 							<div className='space-y-3'>
 								<h5 className='font-semibold'>Languages:</h5>
 								<div className='flex flex-wrap gap-2'>
-									<Badge variant='secondary'>Typescript: 75%</Badge>
-									<Badge variant='secondary'>HTML: 1%</Badge>
-									<Badge variant='secondary'>CSS: 1%</Badge>
-									<Badge variant='secondary'>Javascript: 1%</Badge>
+									{Object.entries(repo.languages).map(
+										([language, percentage], index) => (
+											<Badge
+												key={index}
+												variant={index === 0 ? 'default' : 'secondary'}
+											>
+												{language}: {percentage}%
+											</Badge>
+										),
+									)}
 								</div>
 							</div>
 							<div className='space-y-3'>

@@ -100,7 +100,9 @@ function QualificationCard({
 			</CardHeader>
 			<CardFooter className='grid sm:grid-cols-2 gap-4'>
 				<div>
-					<h4 className='text-lg font-semibold'>{subjects ? 'Subjects' : 'Major'}</h4>
+					<h4 className='text-lg font-semibold'>
+						{subjects ? 'Subjects' : 'Major'}
+					</h4>
 					<p className='text-muted-foreground'>{subjects || major}</p>
 				</div>
 				<div className='place-self-start'>
