@@ -51,6 +51,8 @@ type ProjectCardState = {
 	progress: number
 	status?: 'archived' | 'wip' | 'completed'
 	targetRepo: string
+	icon_url?: string
+	web_url?: string
 }
 
 export function ProjectCard({
@@ -61,6 +63,8 @@ export function ProjectCard({
 	// TODO: Remove status and use github archived option as well as progress percentage to set achieve same functionality. For eg. if progress percentage is 100, status is 'completed'
 	status,
 	targetRepo,
+	icon_url,
+	web_url,
 }: ProjectCardState) {
 	type RepoDataType = {
 		description?: string
@@ -158,14 +162,14 @@ export function ProjectCard({
 					closable={false}
 				>
 					<DialogHeader className='flex-row gap-4 mb-4 items-center'>
-						<img
-							src='https://github.com/knownasnaffy/inner-ink/blob/main/app/frontend/public/logo.png?raw=true'
-							alt='inner ink'
-							className='h-10'
-						/>
+						{icon_url && (
+							<img src={icon_url} alt='inner ink' className='h-10' />
+						)}
 						<div className='text-left'>
 							<DialogTitle>{title}</DialogTitle>
-							<DialogDescription>{desc || repoData.description}</DialogDescription>
+							<DialogDescription>
+								{desc || repoData.description}
+							</DialogDescription>
 						</div>
 						<a href={'https://github.com/' + targetRepo} className='ml-auto'>
 							<Button size='sm' variant='outline' className='max-sm:px-2'>
@@ -254,13 +258,17 @@ export function ProjectCard({
 											)}
 										/>
 									</span>
-									<Button
-										variant='link'
-										className='justify-start px-0 h-fit py-0'
-									>
-										<Link2 className='w-4 h-4 mr-2' />
-										inner-ink.tk
-									</Button>
+									{web_url && (
+										<a href={web_url}>
+											<Button
+												variant='link'
+												className='justify-start px-0 h-fit py-0'
+											>
+												<Link2 className='w-4 h-4 mr-2' />
+												{web_url}
+											</Button>
+										</a>
+									)}
 									<a href={'https://github.com/' + targetRepo + '/#readme'}>
 										<Button
 											variant='link'

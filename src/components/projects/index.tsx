@@ -44,6 +44,8 @@ export function ProjectsSection() {
 					progress={75}
 					status='wip'
 					targetRepo='knownasnaffy/inner-ink'
+					icon_url='https://github.com/knownasnaffy/inner-ink/blob/main/app/frontend/public/logo.png?raw=true'
+					// web_url='https://inner-ink.vercel.app/'
 				/>
 				<ProjectCard
 					title='Portfolio'
@@ -51,6 +53,8 @@ export function ProjectsSection() {
 					progress={90}
 					status='wip'
 					targetRepo='knownasnaffy/knownasnaffy.github.io'
+					icon_url='https://github.com/knownasnaffy/knownasnaffy.github.io/blob/main/public/icon.png?raw=true'
+					web_url='https://naffy.is-a.dev/'
 				/>
 			</div>
 		</section>
