@@ -28,6 +28,35 @@ export function ProjectsSection() {
 					progress={100}
 					status='archived'
 					targetRepo='knownasnaffy/diary-classic'
+					history={
+						<>
+							<p>
+								In 2022, I realized that traditional diary writing with pen and
+								paper wasn't for me. I disliked handwriting and preferred
+								working on my PC. Initially, I tried using Notepad, but manually
+								naming each file was cumbersome. I then experimented with
+								various dedicated diary software, but I couldn't find Obsidian
+								at the time.
+							</p>
+							<p>
+								During my search, I discovered Mini Diary and found it quite
+								appealing. However, it presented a new challenge: it used
+								Electron for its framework, and the developer had stopped
+								updating it. Moreover, my old laptop struggled with its high
+								memory consumption.
+							</p>
+							<p>
+								This led me to a simple yet ambitious idea: "Why not create my
+								own app?" I was learning Python at the time and initially
+								considered using Kiwi for the project. Unfortunately, my PC
+								couldn't handle it, so I turned to Tkinter as the next best
+								option. Despite limited functionality and a busy school
+								schedule, I managed to develop a usable app within about two
+								months. However, due to other priorities, I eventually had to
+								set the project aside.
+							</p>
+						</>
+					}
 				/>
 				<ProjectCard
 					title='Inner Ink'

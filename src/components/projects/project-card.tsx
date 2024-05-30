@@ -53,6 +53,7 @@ type ProjectCardState = {
 	targetRepo: string
 	icon_url?: string
 	web_url?: string
+	history?: React.ReactNode
 }
 
 export function ProjectCard({
@@ -65,6 +66,7 @@ export function ProjectCard({
 	targetRepo,
 	icon_url,
 	web_url,
+	history
 }: ProjectCardState) {
 	type RepoDataType = {
 		description?: string
@@ -158,7 +160,7 @@ export function ProjectCard({
 					</Card>
 				</DialogTrigger>
 				<DialogContent
-					className='max-w-3xl gap-0 md:max-h-[90vh] h-full overflow-auto'
+					className='max-w-3xl gap-0 md:max-h-[90vh] h-full overflow-auto flex flex-col'
 					closable={false}
 				>
 					<DialogHeader className='flex-row gap-4 mb-4 items-center'>
@@ -184,51 +186,13 @@ export function ProjectCard({
 						</DialogClose>
 					</DialogHeader>
 					<Separator />
-					<div className='flex max-md:flex-col gap-4'>
+					<div className='flex max-md:flex-col gap-4 grow'>
 						<div className='grow space-y-1 md:mt-4 max-md:order-last'>
 							<h4 className='scroll-m-20 text-xl font-semibold tracking-tight'>
 								History:
 							</h4>
 							<div className='prose max-w-full'>
-								Pellentesque at facilisis tortor. Cras elementum, sapien non
-								venenatis consequat, orci nisl bibendum turpis, ut consequat
-								velit nibh quis purus. Nulla erat magna, tincidunt in turpis
-								vel, ornare aliquet massa. Nam pharetra tempor posuere. In
-								feugiat gravida viverra. Proin eleifend fringilla diam non
-								semper. Nullam faucibus, nibh quis tempor dictum, nibh metus
-								vestibulum quam, in vestibulum leo velit quis magna. Nullam orci
-								risus, bibendum ac magna a, ultrices fermentum lacus. Vestibulum
-								pretium nunc dolor, ut sollicitudin ante semper vitae. In at
-								nisi eget eros vestibulum volutpat. Pellentesque pulvinar erat a
-								pulvinar dictum. Sed quis mauris non purus volutpat sodales. In
-								dignissim porta ipsum facilisis accumsan. Lorem ipsum dolor sit
-								amet, consectetur adipiscing elit. Nam efficitur luctus risus,
-								sed placerat eros sagittis at. Donec auctor tortor non
-								consectetur mattis. Curabitur nec libero euismod, fringilla
-								lorem sed, tristique nulla. Suspendisse non dui vitae neque
-								sagittis porttitor ac tempus urna. Praesent bibendum lorem
-								imperdiet, hendrerit ex sit amet, blandit lectus. Ut egestas
-								massa eu felis condimentum sagittis. Etiam egestas, enim in
-								lobortis pellentesque, elit ligula ultrices felis, sed pulvinar
-								nisl sapien ac urna. Sed dui metus, pellentesque et semper
-								ullamcorper, volutpat et eros. Proin pharetra turpis et justo
-								condimentum efficitur. Donec pretium non risus nec dignissim.
-								Integer nec enim posuere, ornare sem ac, semper massa. Cras
-								vitae viverra est, id faucibus eros. Praesent elit leo, egestas
-								et convallis quis, cursus sit amet orci. Vivamus pretium posuere
-								leo vel congue. Aliquam vitae porttitor odio. Sed vulputate
-								porttitor orci quis ultricies. Aenean lorem metus, porta sit
-								amet tempor rhoncus, iaculis quis enim. Ut molestie orci quis
-								lacus dictum, sit amet maximus eros sagittis. Integer accumsan
-								tortor vitae enim vulputate, non maximus velit vestibulum.
-								Praesent accumsan euismod massa efficitur feugiat. Nulla lacinia
-								dui in interdum ultrices. Nullam nec pretium libero. Phasellus
-								sed libero nisl. Mauris egestas ut turpis vitae imperdiet. Nunc
-								nec lorem ligula. Pellentesque mattis lectus vel risus pulvinar
-								interdum ac id leo. Mauris erat quam, faucibus in tortor quis,
-								iaculis tempus lectus. Ut in ultricies velit, quis tincidunt
-								nunc. Vestibulum magna augue, euismod id nibh nec, tempus congue
-								velit. Nunc non ultricies metus, vel mollis ligula.
+{history}
 							</div>
 						</div>
 						<Separator orientation='vertical' className='max-md:hidden' />
