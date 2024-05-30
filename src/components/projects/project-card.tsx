@@ -148,8 +148,8 @@ export function ProjectCard({
 						/>
 					</Card>
 				</DialogTrigger>
-				<DialogContent className='max-w-3xl' closable={false}>
-					<DialogHeader className='flex-row gap-4 items-center'>
+				<DialogContent className='max-w-3xl gap-0' closable={false}>
+					<DialogHeader className='flex-row gap-4 mb-4 items-center'>
 						<img
 							src='https://github.com/knownasnaffy/inner-ink/blob/main/app/frontend/public/logo.png?raw=true'
 							alt='inner ink'
@@ -172,9 +172,9 @@ export function ProjectCard({
 					</DialogHeader>
 					<Separator />
 					<div className='flex gap-4'>
-						<div className='grow space-y-4'>...</div>
-						<Separator orientation='vertical' />
-						<div className='space-y-4 w-64'>
+						<div className='grow space-y-4 mt-4'>...</div>
+						<Separator orientation='vertical' className='-mt-' />
+						<div className='space-y-4 w-64 mt-4'>
 							<div className='flex flex-col gap-2'>
 								<span
 									className={cn(
