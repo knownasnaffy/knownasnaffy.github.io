@@ -12,6 +12,7 @@ import {
 	Link2,
 	Scale,
 	StarIcon,
+	X,
 } from 'lucide-react'
 import {
 	Card,
@@ -29,6 +30,7 @@ import {
 	DialogContent,
 	DialogDescription,
 	DialogTitle,
+	DialogClose,
 } from './ui/dialog'
 import { Separator } from './ui/separator'
 import { cn } from '@/utils'
@@ -153,6 +155,11 @@ function ProjectCard({
 								View on GitHub
 							</Button>
 						</a>
+						<DialogClose asChild>
+							<Button variant='outline' size='sm' className='px-2'>
+								<X className='h-5 w-5' />
+							</Button>
+						</DialogClose>
 					</DialogHeader>
 					<Separator />
 					<div className='flex gap-4'>
@@ -208,7 +215,8 @@ function ProjectCard({
 									variant='link'
 									className='justify-start px-0 h-fit py-0 text-muted-foreground'
 								>
-									<StarIcon className='h-4 w-4 mr-2' />{stars} Star
+									<StarIcon className='h-4 w-4 mr-2' />
+									{stars} Star
 								</Button>
 								<Button
 									variant='link'
