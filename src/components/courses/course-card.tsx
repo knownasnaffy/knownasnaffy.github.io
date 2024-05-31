@@ -20,7 +20,7 @@ export function CourseCard({
 	progress?: number;
 }) {
 	return (
-		<Card className='h-full'>
+		<Card className='h-full hover:shadow-2xl hover:shadow-background/50 transition-all ease-in-out duration-300'>
 			<CardHeader>
 				<CardTitle>{course}</CardTitle>
 				<CardDescription>{org}</CardDescription>
