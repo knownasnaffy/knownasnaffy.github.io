@@ -113,6 +113,18 @@ export function ProjectsSection() {
 					targetRepo='knownasnaffy/knownasnaffy.github.io'
 					icon_url='https://github.com/knownasnaffy/knownasnaffy.github.io/blob/main/public/icon.png?raw=true'
 					web_url='https://naffy.is-a.dev/'
+					history={
+						<>
+							<p>
+								This project may not seem extraordinary, but it holds a special
+								place for me. I've attempted to create a portfolio several
+								times, but none of them ever felt quite right. However, this one
+								does. I can hardly believe I made it in just three days, with
+								the actual working time being less than 24 hours. This is the
+								fastest project to be completed so far.
+							</p>
+						</>
+					}
 				/>
 			</div>
 		</section>
