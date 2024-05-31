@@ -299,11 +299,11 @@ export function ProjectCard({
 								<div className='space-y-3'>
 									<h5 className='font-semibold'>Tags:</h5>
 									<div className='flex flex-wrap gap-2'>
-										<Badge variant='secondary'>React</Badge>
-										<Badge variant='secondary'>Typescript</Badge>
-										<Badge variant='secondary'>Tailwind</Badge>
-										<Badge variant='secondary'>Daisy UI</Badge>
-										<Badge variant='secondary'>Desktop App</Badge>
+										{tags.map((tag, index) => (
+											<Badge key={index} variant='secondary'>
+												{tag}
+											</Badge>
+										))}
 									</div>
 								</div>
 							</div>
