@@ -66,7 +66,7 @@ export function ProjectCard({
 	targetRepo,
 	icon_url,
 	web_url,
-	history
+	history,
 }: ProjectCardState) {
 	type RepoDataType = {
 		description?: string
@@ -191,12 +191,10 @@ export function ProjectCard({
 							<h4 className='scroll-m-20 text-xl font-semibold tracking-tight'>
 								History:
 							</h4>
-							<div className='prose max-w-full'>
-{history}
-							</div>
+							<div className='prose max-w-full'>{history}</div>
 						</div>
 						<Separator orientation='vertical' className='max-md:hidden' />
-						<div className='w-64 mt-4 shrink-0'>
+						<div className='md:w-64 mt-4 shrink-0'>
 							<div className='space-y-4 md:sticky md:top-0'>
 								<div className='flex flex-col gap-2'>
 									<span
