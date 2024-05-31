@@ -54,6 +54,24 @@
 		@apply border-border;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background text-foreground overflow-hidden;
+	}
+}
+
+@layer components {
+	[class*=' scrollbar-']::-webkit-scrollbar {
+		@apply w-2;
+	}
+
+	[class*=' scrollbar-']::-webkit-scrollbar-track {
+		@apply bg-transparent my-1;
+	}
+
+	.scrollbar-default::-webkit-scrollbar-thumb {
+		@apply bg-background hover:bg-background rounded-md;
+	}
+
+	.scrollbar-secondary::-webkit-scrollbar-thumb {
+		@apply bg-muted-foreground hover:bg-muted-foreground/80 rounded-md;
 	}
 }

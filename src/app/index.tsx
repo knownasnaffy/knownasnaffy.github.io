@@ -7,8 +7,7 @@ import { SkillsSection } from '../components/skills'
 export default function HomePage() {
 	return (
 		<>
-		{/* TODO: Add custom scrollbar */}
-			<div className='bg-gradient-to-br from-[#4A25EB] to-[#25C6EB] via-primary text-white h-screen overflow-auto md:snap-y md:snap-mandatory overscroll-y-none pb-32'>
+			<div className='bg-gradient-to-br from-[#4A25EB] to-[#25C6EB] via-primary text-white h-screen overflow-auto md:snap-y md:snap-mandatory overscroll-y-none pb-32 scrollbar-default'>
 				<InfoSection />
 				<ProjectsSection />
 				<SkillsSection />

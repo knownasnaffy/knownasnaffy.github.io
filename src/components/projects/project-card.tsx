@@ -160,7 +160,7 @@ export function ProjectCard({
 					</Card>
 				</DialogTrigger>
 				<DialogContent
-					className='max-w-3xl gap-0 md:max-h-[90vh] h-full overflow-auto flex flex-col'
+					className='max-w-3xl gap-0 md:max-h-[90vh] h-full overflow-auto flex flex-col scrollbar-secondary'
 					closable={false}
 				>
 					<DialogHeader className='flex-row gap-4 mb-4 items-center'>
