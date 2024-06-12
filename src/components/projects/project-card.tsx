@@ -33,7 +33,7 @@ import {
 } from '../ui/dialog'
 import { Separator } from '../ui/separator'
 import { cn } from '@/utils'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 // TODO: Move this ugly thing to a new file
 const headers = new Headers()
@@ -133,12 +133,36 @@ export function ProjectCard({
 			.catch(err => console.error(err))
 	}, [targetRepo])
 
+	// Using useState and useEffect because the width of the card changes on window resize and it leads to bad style of the progress indicator. Not sure who will check my website by resizing it but lets just add it.
+	const cardRef = useRef<HTMLDivElement>(null)
+	const [cardWidth, setCardWidth] = useState(0)
+
+	useLayoutEffect(() => {
+		const handleResize = () => {
+			setCardWidth(cardRef.current?.offsetWidth!)
+		}
+		window.addEventListener('resize', handleResize)
+		setCardWidth(cardRef.current?.offsetWidth!)
+		return () => window.removeEventListener('resize', handleResize)
+	})
+
+	// Added a separate function to keep the tooltip in the horizontal range of the card
+	function getOffsetLeft(progress: number) {
+		const offsetLeft = (progress * cardWidth) / 100 - 20
+		if (offsetLeft < 40) return 40
+		if (offsetLeft > cardWidth - 40) return cardWidth - 40
+		return offsetLeft
+	}
+
 	return (
 		<>
 			<Dialog>
 				<DialogTrigger asChild>
 					{/* IDEA: When the user hovers over the card, a popup bubble will appear on the progressbar aligned to the bottom and animating in from the left */}
-					<Card className='relative hover:shadow-2xl hover:shadow-background/50 transition-all duration-300 ease-in-out hover:cursor-pointer'>
+					<Card
+						ref={cardRef}
+						className='relative hover:shadow-2xl hover:shadow-background/50 transition-all duration-300 ease-in-out hover:cursor-pointer group'
+					>
 						<CardHeader>
 							<CardTitle className='tracking-tight font-bold'>
 								{title}
@@ -148,15 +172,28 @@ export function ProjectCard({
 								<Calendar className='w-4 h-4' /> Started {repoData.created_at}
 							</CardDescription>
 						</CardHeader>
+
 						<CardFooter className='flex flex-wrap gap-2 mb-2'>
 							{tags.map(tag => (
 								<Badge key={tag}>{tag}</Badge>
 							))}
 						</CardFooter>
+
 						<Progress
 							value={progress}
 							className='rounded-t-none h-2 absolute bottom-0'
+							title={title}
 						/>
+
+						<span
+							className='absolute -bottom-11 h-10 w-10 rounded-full bg-primary border-4 border-background hidden lg:group-hover:flex animate-in fade-in slide-in-from-left-10 duration-300 items-center justify-center text-background text-xs font-medium'
+							style={{
+								left: `${getOffsetLeft(progress)}px`,
+							}}
+						>
+							{/* Tried to add a complete icon for complete ones and an archive icon for archived ones but the stroke-width of the icon was not changing, so I had to fall back to progress percentage. Better luck next time */}
+							{progress}%
+						</span>
 					</Card>
 				</DialogTrigger>
 				<DialogContent
