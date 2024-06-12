@@ -158,7 +158,6 @@ export function ProjectCard({
 		<>
 			<Dialog>
 				<DialogTrigger asChild>
-					{/* IDEA: When the user hovers over the card, a popup bubble will appear on the progressbar aligned to the bottom and animating in from the left */}
 					<Card
 						ref={cardRef}
 						className='relative hover:shadow-2xl hover:shadow-background/50 transition-all duration-300 ease-in-out hover:cursor-pointer group'
