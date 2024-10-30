@@ -23,7 +23,7 @@ export function ProjectsSection() {
 			<div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-stretch gap-8'>
 				<ProjectCard
 					title='Diary Classic'
-					desc='Simple Write-only Diary with TKinter GUI and date and time support'
+					desc='Write-only Diary with TKinter GUI and date-time support'
 					tags={['Python', 'Tkinter', 'Native', 'Editor']}
 					progress={100}
 					status='archived'
