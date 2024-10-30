@@ -2,7 +2,7 @@ export function InfoSection() {
 	return (
 		<section className='grid min-h-screen place-items-center lg:grid-cols-2 gap-8 container mx-auto md:snap-start md:snap-always'>
 			<div className='space-y-4 text-center lg:text-left max-lg:self-start max-lg:order-last'>
-				<h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>
+				<h1 className='scroll-m-20 text-4xl font-extrabold lg:text-5xl'>
 					Barinderpreet Singh
 				</h1>
 				<p className='text-xl text-white/75'>

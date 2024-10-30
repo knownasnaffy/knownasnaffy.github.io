@@ -7,7 +7,7 @@ export function SkillsSection() {
 	return (
 		<section className='min-h-screen py-8 container mx-auto flex flex-col justify-center gap-8 md:snap-start md:snap-always'>
 			<div className='flex justify-between items-center'>
-				<h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>
+				<h1 className='scroll-m-20 text-4xl font-extrabold lg:text-5xl'>
 					Skills
 				</h1>
 				<a href='mailto:naffydharni006@gmail.com?subject=Your skills are amazing!&body=I was really impressed by your skills and would love to continue to admire you.'>
