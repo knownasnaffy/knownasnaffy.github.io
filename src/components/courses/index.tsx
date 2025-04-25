@@ -13,6 +13,8 @@ export default function CoursesSection() {
 				<a
 					href='https://linkedin.com/in/knownasnaffy'
 					className={cn(buttonVariants({ variant: 'ghost' }), 'gap-2')}
+					target='_blank'
+					rel='noopener noreferrer'
 				>
 					Hire Me
 					<Building2 className='size-4' />
