@@ -10,7 +10,11 @@ export function SkillsSection() {
 				<h1 className='scroll-m-20 text-4xl font-extrabold lg:text-5xl'>
 					Skills
 				</h1>
-				<a href='https://www.linkedin.com/in/knownasnaffy/details/skills/'>
+				<a
+					href='https://www.linkedin.com/in/knownasnaffy/details/skills/'
+					target='_blank'
+					rel='noopener noreferrer'
+				>
 					<Button className='gap-1' variant='ghost'>
 						View More
 						<ArrowUpRight className='h-5 w-5' />
