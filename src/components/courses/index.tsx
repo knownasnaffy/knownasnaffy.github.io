@@ -15,7 +15,7 @@ export default function CoursesSection() {
 					className={cn(buttonVariants({ variant: 'ghost' }), 'gap-2')}
 				>
 					Hire Me
-					<Building2 className='h-5 w-5' />
+					<Building2 className='size-4' />
 				</a>
 			</div>
 			<div className='grid lg:grid-cols-3 place-items-stretch gap-8'>
