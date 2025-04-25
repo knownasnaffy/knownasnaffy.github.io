@@ -11,8 +11,7 @@ export function CourseCard({
 	course,
 	org,
 	duration,
-	skills: subjects,
-	major,
+	skills,
 	cgpa,
 	percentage,
 	progress,
@@ -20,8 +19,7 @@ export function CourseCard({
 	course: string
 	org: string
 	duration: string
-	skills?: string
-	major?: string
+	skills: string
 	cgpa?: number
 	percentage?: number
 	progress?: number
@@ -38,10 +36,8 @@ export function CourseCard({
 			</CardHeader>
 			<CardFooter className='grid lg:grid-cols-2 gap-4'>
 				<div>
-					<h4 className='text-lg font-semibold mb-1'>
-						{subjects ? 'Skills' : 'Major'}
-					</h4>
-					<p className='text-muted-foreground text-sm'>{subjects || major}</p>
+					<h4 className='text-lg font-semibold mb-1'>Skills</h4>
+					<p className='text-muted-foreground text-sm'>{skills}</p>
 				</div>
 				<div className='place-self-start'>
 					<h4 className='text-lg font-semibold mb-1'>

@@ -32,14 +32,14 @@ export default function CoursesSection() {
 					course='Senior Secondary Education'
 					org='Budha Dal Public School, Patiala - (CBSE)'
 					duration='2022 - 2024'
-					skills='React, Next.js, Tailwind CSS, Tauri, SQL'
+					skills='React, Next.js, Tailwind CSS, Tauri, SQL, CI'
 					percentage={61.2}
 				/>
 				<CourseCard
-					course='Bachelors of Technology'
+					course='B.Tech. in CSE'
 					org='BBSBEC, Fatehgarh Sahib'
 					duration='2024 - 2028'
-					major='Computer Science and Engineering'
+					skills='Django, Wordpress, Linux, Flutter'
 					progress={25}
 				/>
 			</div>
