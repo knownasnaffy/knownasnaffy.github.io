@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { Mail } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import skillsList from './skills-list'
 
 export function SkillsSection() {
@@ -10,10 +10,10 @@ export function SkillsSection() {
 				<h1 className='scroll-m-20 text-4xl font-extrabold lg:text-5xl'>
 					Skills
 				</h1>
-				<a href='mailto:naffydharni006@gmail.com?subject=Your skills are amazing!&body=I was really impressed by your skills and would love to continue to admire you.'>
-					<Button className='gap-2' variant='ghost'>
-						Praise Me
-						<Mail className='h-5 w-5' />
+				<a href='https://www.linkedin.com/in/knownasnaffy/details/skills/'>
+					<Button className='gap-1' variant='ghost'>
+						View More
+						<ArrowUpRight className='h-5 w-5' />
 					</Button>
 				</a>
 			</div>
