@@ -25,14 +25,14 @@ export default function CoursesSection() {
 					course='Secondary Education'
 					org='Budha Dal Public School, Patiala - (CBSE)'
 					duration='2020 - 2022'
-					subjects='English, Maths, Science, Social Studies, Punjabi, Hindi, Information Technology'
+					skills='HTML, CSS, Bootstrap, Javascript, Python'
 					percentage={86.3}
 				/>
 				<CourseCard
 					course='Senior Secondary Education'
 					org='Budha Dal Public School, Patiala - (CBSE)'
 					duration='2022 - 2024'
-					subjects='English, Maths, Physics, Chemistry, Informatics Practice'
+					skills='React, Next.js, Tailwind CSS, Tauri, SQL'
 					percentage={61.2}
 				/>
 				<CourseCard
