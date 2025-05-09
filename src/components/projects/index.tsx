@@ -74,7 +74,7 @@ export function ProjectsSection() {
 					status='wip'
 					targetRepo='knownasnaffy/inner-ink'
 					icon_url='https://github.com/knownasnaffy/inner-ink/blob/main/app/frontend/public/logo.png?raw=true'
-					// web_url='https://inner-ink.vercel.app/'
+					web_url='http://naffy.is-a.dev/inner-ink/'
 					history={
 						<>
 							<p>
