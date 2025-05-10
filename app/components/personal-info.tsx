@@ -1,11 +1,4 @@
-import {
-  DatabaseIcon,
-  FileUser,
-  MailIcon,
-  MapPin,
-  Palette,
-  Rss,
-} from "lucide-react";
+import { MailIcon, MapPin, Palette, Rss } from "lucide-react";
 import { GithubIcon, LinkedInIcon } from "~/lib/social-icons";
 
 export default function PersonalInfo() {
@@ -115,7 +108,7 @@ const SidebarLink = ({
         href={href}
         target={newTab ? "_blank" : "_self"}
         rel={newTab ? "noopener" : undefined}
-        className="text-sm text-[#D1D5DC] hover:text-primary inline-flex items-center gap-2"
+        className="text-sm text-[#D1D5DC] hover:text-white transition-all hover:underline underline-offset-2 inline-flex items-center gap-2"
       >
         {children}
       </a>
