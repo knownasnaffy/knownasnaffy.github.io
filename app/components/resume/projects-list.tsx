@@ -16,7 +16,7 @@ const items = [
       "A lightweight, private journaling app built with Python and Tkinter.",
     timeline: (
       <>
-        Nov 2021 <i>Present</i>
+        April 2022 - May 2022 <i>(Archived)</i>
       </>
     ),
     content: (
@@ -50,9 +50,10 @@ const items = [
         <h4 className="font-bold mt-3">Outcome / Learnings:</h4>
         <p>
           &iary taught me how to handle UI events, file storage, and basic state
-          management. It was also my first experience thinking deeply about UX,
-          even in a basic app. This project eventually led to the much more
-          advanced <i className="underline underline-offset-2">Inner Ink</i>.
+          management. It was also my first experience thinking deeply about{" "}
+          <i className="underline underline-offset-2">UX</i>, even in a basic
+          app. This project eventually led to the much more advanced{" "}
+          <i className="underline underline-offset-2">Inner Ink</i>.
         </p>
       </>
     ),
@@ -72,7 +73,9 @@ const items = [
         <h4 className="font-bold">The Problem:</h4>
         <p>
           After switching to a new laptop with Windows 11, I felt that my older
-          journaling app ("&iary" built in Tkinter){" "}
+          journaling app (
+          <i className="underline underline-offset-2">"&iary"</i> built in
+          Tkinter){" "}
           <i className="underline underline-offset-2">looked outdated</i> and
           lacked formatting options. I also wanted a feature to view past
           entries with a searchable interface.
@@ -123,22 +126,30 @@ const items = [
         <p>
           I joined the project during its early development phase in my first
           semester as part of a two-member team. The stack and direction were
-          already defined, but I took on the frontend responsibilities and
-          helped develop key student and faculty-facing features.
+          already defined, but I took on the{" "}
+          <i className="underline underline-offset-2">frontend</i>{" "}
+          responsibilities and helped develop key student and faculty-facing
+          features.
         </p>
         <h4 className="font-bold mt-3">My Role:</h4>
         <p>
           I worked on dynamic forms, integrated UI components, and wrote
           maintainable code across multiple sections, where I got hands-on
-          experience with structured form logic, state updates, and interfacing
-          with backend APIs.
+          experience with{" "}
+          <i className="underline underline-offset-2">structured form logic</i>,{" "}
+          <i className="underline underline-offset-2">state updates</i>, and
+          interfacing with{" "}
+          <i className="underline underline-offset-2">backend APIs</i>.
         </p>
         <h4 className="font-bold mt-3">What I Learned:</h4>
         <p>
           This was my first real-world experience working in a team with defined
-          roles, Git workflows, and long-term planning. I learned to work within
-          constraints, maintain clean code in shared environments, and develop
-          for real users.
+          roles, Git workflows, and{" "}
+          <i className="underline underline-offset-2">long-term planning</i>. I
+          learned to work within constraints, maintain clean code in{" "}
+          <i className="underline underline-offset-2">shared environments</i>,
+          and develop for{" "}
+          <i className="underline underline-offset-2">real users</i>.
         </p>
       </>
     ),
@@ -153,18 +164,31 @@ export default function ProjectsList() {
           value={item.id}
           key={item.id}
           className="bg-background has-focus-visible:border-ring has-focus-visible:ring-ring/50 rounded-md border px-4 py-2 outline-none last:border-b has-focus-visible:ring-[3px] transition-all"
+          onKeyDown={(event) => {
+            const keysToBlock = [
+              "ArrowUp",
+              "ArrowDown",
+              "ArrowLeft",
+              "ArrowRight",
+            ];
+            if (keysToBlock.includes(event.key)) {
+              // event.preventDefault();
+              event.stopPropagation();
+            }
+          }}
         >
           <AccordionPrimitive.Header className="flex">
             <AccordionPrimitive.Trigger className="focus-visible:ring-0 grid gap-1 rounded-md py-2 w-full text-left text-base leading-6 font-semibold transition-all outline-none [&_svg>path:last-child]:origin-center [&_svg>path:last-child]:transition-all [&_svg>path:last-child]:duration-200 [&[data-state=open]_svg]:rotate-180 [&[data-state=open]_svg>path:last-child]:rotate-90 [&[data-state=open]_svg>path:last-child]:opacity-0 hover:cursor-pointer">
-              <span className="flex items-center justify-start w-full">
-                {item.title}
-                <span className="text-muted-foreground text-sm ml-2 leading-[inherit] font-normal">
-                  {item.timeline}
+              <span className="flex items-start lg:items-center justify-start w-full">
+                <span className="flex flex-col lg:flex-row">
+                  {item.title}
+                  <span className="text-muted-foreground text-sm lg:ml-2 leading-[inherit] font-normal">
+                    {item.timeline}
+                  </span>
                 </span>
-
                 <PlusIcon
                   size={16}
-                  className="pointer-events-none shrink-0 opacity-60 transition-transform duration-200 ml-auto"
+                  className="pointer-events-none shrink-0 opacity-60 transition-transform duration-200 ml-auto max-lg:my-1"
                   aria-hidden="true"
                 />
               </span>
