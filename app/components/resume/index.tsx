@@ -1,6 +1,7 @@
 import EducationList from "./education-list";
 import Languages from "./languages";
 import ProjectsList from "./projects-list";
+import Skills from "./skills";
 
 export default function Resume() {
   return (
@@ -29,33 +30,7 @@ export default function Resume() {
         </ul>
       </p>
       <h2 className="">Skills & Technologies</h2>
-      <ul className="">
-        <li>
-          <b>Frontend:</b> React, Next.js, Tailwind CSS, Typescript
-        </li>
-        <li>
-          <b>Backend:</b> Node.js, REST APIs, JWT, OAuth
-        </li>
-        <li>
-          <b>Database:</b> PostgreSQL, MongoDB, SQLite
-        </li>
-        <li>
-          <b>State Management:</b> Redux, Zustand
-        </li>
-        <li>
-          <b>Tooling:</b> Bun, ESLint, Git, Github, GitHub Actions
-        </li>
-        <li>
-          <b>Deployment:</b> GitHub Pages, Vercel, Domain Management
-        </li>
-        <li>
-          <b>Design:</b> Figma, Responsive Designs, Accessibility Best
-          Practices, SEO
-        </li>
-        <li>
-          <b>Other:</b> Shell, Python, Flutter, Tauri
-        </li>
-      </ul>
+      <Skills />
       <h2 className="">Projects</h2>
       <ProjectsList />
       <h2 className="">Education</h2>
