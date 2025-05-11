@@ -1,3 +1,4 @@
+import EducationList from "./education-list";
 import ProjectsList from "./projects-list";
 
 export default function Resume() {
@@ -56,6 +57,8 @@ export default function Resume() {
       </ul>
       <h2 className="">Projects</h2>
       <ProjectsList />
+      <h2 className="">Education</h2>
+      <EducationList />
     </div>
   );
 }
