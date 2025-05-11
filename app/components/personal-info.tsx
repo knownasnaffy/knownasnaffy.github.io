@@ -64,7 +64,7 @@ export default function PersonalInfo() {
             </SidebarLink>
             <SidebarLink href="/fancy" newTab={false}>
               <Palette className="size-4" />
-              Fancy portfolio
+              Prefer colors?
             </SidebarLink>
           </>
         }
