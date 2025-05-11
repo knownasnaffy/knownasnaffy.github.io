@@ -62,9 +62,9 @@ export default function PersonalInfo() {
               <Rss className="size-4" />
               Blog
             </SidebarLink>
-            <SidebarLink href="/resume" newTab={true}>
+            <SidebarLink href="/fancy" newTab={true}>
               <Palette className="size-4" />
-              Fancy Page
+              Fancy portfolio
             </SidebarLink>
           </>
         }
