@@ -147,12 +147,7 @@ const items = [
 
 export default function ProjectsList() {
   return (
-    <Accordion
-      type="single"
-      collapsible
-      className="w-full not-prose space-y-3"
-      defaultValue="3"
-    >
+    <Accordion type="multiple" className="w-full not-prose space-y-3">
       {items.map((item) => (
         <AccordionItem
           value={item.id}
