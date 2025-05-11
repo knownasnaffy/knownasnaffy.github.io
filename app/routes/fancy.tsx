@@ -19,48 +19,9 @@ export default function FancyPage() {
           <h3 id="toc" className=" font-semibold">
             Table of Contents
           </h3>
-          <ul className=" mt-2 space-y-1 text-sm">
-            <li>
-              <a
-                href="#section1"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Professional Summary
-              </a>
-            </li>
-            <li>
-              <a
-                href="#section2"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Skills & Technologies
-              </a>
-            </li>
-            <li>
-              <a
-                href="#section3"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Projects
-              </a>
-            </li>
-            <li>
-              <a
-                href="#section4"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Education
-              </a>
-            </li>
-            <li>
-              <a
-                href="#section5"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Languages
-              </a>
-            </li>
-          </ul>
+          <p className="text-sm text-muted-foreground mt-2">
+            {"Nothing here yet"}
+          </p>
         </aside>
       </main>
     </>
