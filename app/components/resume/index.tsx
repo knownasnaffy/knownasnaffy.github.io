@@ -1,4 +1,5 @@
 import EducationList from "./education-list";
+import Languages from "./languages";
 import ProjectsList from "./projects-list";
 
 export default function Resume() {
@@ -59,6 +60,8 @@ export default function Resume() {
       <ProjectsList />
       <h2 className="">Education</h2>
       <EducationList />
+      <h2 className="">Languages</h2>
+      <Languages />
     </div>
   );
 }
