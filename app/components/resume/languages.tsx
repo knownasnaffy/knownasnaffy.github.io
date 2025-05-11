@@ -19,7 +19,7 @@ export default function Languages() {
             <h4 className="mt-0">{item.language}</h4>
             <span>{item.remark}</span>
           </span>
-          <span className="grid grid-cols-5 h-3 gap-2">
+          <span className="grid grid-cols-5 h-3 gap-1 sm:gap-2">
             {getSteps(item.proficieny).map((item, index) => (
               <span
                 className={cn(
