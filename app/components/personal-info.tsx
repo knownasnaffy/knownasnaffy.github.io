@@ -1,4 +1,5 @@
 import { MailIcon, MapPin, Palette, Rss } from "lucide-react";
+import { Link } from "react-router";
 import { GithubIcon, LinkedInIcon } from "~/lib/social-icons";
 
 export default function PersonalInfo() {
@@ -102,16 +103,20 @@ const SidebarLink = ({
   newTab: boolean;
   children: React.ReactNode;
 }) => {
+  const linkStyle =
+    "text-sm focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs text-[#D1D5DC] hover:text-white transition-all hover:underline underline-offset-2 inline-flex items-center gap-2";
+
   return (
     <li className="pl-0">
-      <a
-        href={href}
-        target={newTab ? "_blank" : "_self"}
-        rel={newTab ? "noopener" : undefined}
-        className="text-sm focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs text-[#D1D5DC] hover:text-white transition-all hover:underline underline-offset-2 inline-flex items-center gap-2"
-      >
-        {children}
-      </a>
+      {newTab ? (
+        <a href={href} target={"_blank"} rel={"noopener"} className={linkStyle}>
+          {children}
+        </a>
+      ) : (
+        <Link to={href} className={linkStyle}>
+          {children}
+        </Link>
+      )}
     </li>
   );
 };
