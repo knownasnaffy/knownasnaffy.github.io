@@ -12,7 +12,7 @@ export default function PersonalInfo() {
         <h2 id="profile-heading" className="text-2xl font-bold">
           Barinderpreet Singh
         </h2>
-        <p className="text-sm text-[#D1D5DC]">Software Engineer</p>
+        <p className="text-sm text-[#D1D5DC]">Full-stack Developer</p>
       </section>
 
       <SidebarSection
