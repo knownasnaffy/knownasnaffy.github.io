@@ -31,6 +31,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Barinderpreet Singh",
+              jobTitle: "Full-Stack Developer",
+              url: "https://barinderpreet.com",
+              sameAs: [
+                "https://github.com/knownasnaffy",
+                "https://linkedin.com/in/knownasnaffy",
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="dark">
         {children}
