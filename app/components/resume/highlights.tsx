@@ -8,7 +8,7 @@ export default function Highlights() {
           performant web and desktop apps with modern tooling.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-3 mt-3 text-center">
+      <div className="grid md:grid-cols-2 gap-3 mt-3 md:text-center [&>div]:flex [&>div]:flex-col [&>div]:justify-center">
         <div className="rounded-md border px-4">
           <h4>2+ Years</h4>
           <p>Hands-on dev experience</p>
