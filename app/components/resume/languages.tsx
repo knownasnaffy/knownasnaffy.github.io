@@ -22,6 +22,7 @@ export default function Languages() {
           <span className="grid grid-cols-5 h-3 gap-1 sm:gap-2">
             {getSteps(item.proficieny).map((item, index) => (
               <span
+                key={index}
                 className={cn(
                   item ? "bg-[#D1D5DC]" : "bg-muted",
                   "rounded-xs",
