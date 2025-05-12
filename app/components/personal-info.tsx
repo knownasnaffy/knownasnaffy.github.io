@@ -5,13 +5,13 @@ import { GithubIcon, LinkedInIcon } from "~/lib/social-icons";
 export default function PersonalInfo() {
   return (
     <aside
-      className="border-r px-8 lg:px-12 xl:px-8 py-8 md:sticky md:top-0 md:h-screen space-y-6"
+      className="border-r px-6 sm:px-8 lg:px-12 xl:px-8 py-8 md:sticky md:top-0 md:h-screen space-y-9 overflow-auto"
       aria-label="Personal Info"
     >
       <section aria-labelledby="profile-heading">
-        <h2 id="profile-heading" className="text-2xl font-bold">
+        <h1 id="profile-heading" className="text-2xl font-bold">
           Barinderpreet Singh
-        </h2>
+        </h1>
         <p className="text-sm text-[#D1D5DC]">Full-stack Developer</p>
       </section>
 
@@ -61,7 +61,7 @@ export default function PersonalInfo() {
           <>
             <SidebarLink href="/blog" newTab={false}>
               <Rss className="size-4" />
-              Blog
+              Blog posts
             </SidebarLink>
             <SidebarLink href="/fancy" newTab={false}>
               <Palette className="size-4" />
