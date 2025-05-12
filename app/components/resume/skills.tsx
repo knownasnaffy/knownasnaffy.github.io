@@ -8,8 +8,8 @@ const skills = [
   },
   {
     groupName: "Backend",
-    primary: ["Django", "REST APIs", "JWT", "OAuth"],
-    secondary: ["Node.js"],
+    primary: ["Django", "Node.js"],
+    secondary: ["REST APIs", "JWT", "OAuth"],
   },
   {
     groupName: "Database",
