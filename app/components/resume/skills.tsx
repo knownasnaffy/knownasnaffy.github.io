@@ -39,7 +39,7 @@ const skills = [
       "Tauri",
       "Tkinter",
       "Linux CLI & Bash Scripting",
-      "NeoVim",
+      "Neovim",
     ],
   },
 ];
