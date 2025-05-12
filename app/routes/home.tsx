@@ -1,7 +1,7 @@
 import PersonalInfo from "~/components/personal-info";
 import type { Route } from "./+types/home";
 import Resume from "~/components/resume";
-import TOC from "~/components/content-layout";
+import TOC from "~/components/toc";
 import { useRef } from "react";
 
 export function meta({}: Route.MetaArgs) {
