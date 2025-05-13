@@ -44,9 +44,9 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export function links({}: Route.LinksFunction) {
-  return [{ rel: "canonical", href: "https://barinderpreet.com" }];
-}
+export const links: Route.LinksFunction = () => [
+  { rel: "canonical", href: "https://barinderpreet.com" },
+];
 
 export default function Home() {
   const mainRef = useRef<HTMLDivElement>(null);
