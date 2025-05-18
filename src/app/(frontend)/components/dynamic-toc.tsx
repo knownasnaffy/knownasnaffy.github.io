@@ -63,7 +63,7 @@ export default function TOC({ blogPage = false }: { blogPage?: boolean }) {
     })
 
     return () => observer.disconnect()
-  }, [headings])
+  }, [headings, blogPage])
 
   return (
     <aside className="sticky top-0 h-screen hidden xl:block border-l py-8">

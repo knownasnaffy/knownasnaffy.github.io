@@ -1,5 +1,4 @@
 'use server'
-import Image from 'next/image'
 
 import config from '@/payload.config'
 import { getPayload } from 'payload'
