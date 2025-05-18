@@ -63,7 +63,7 @@ const items = [
         <h4 className="font-bold">The Problem:</h4>
         <p>
           After switching to a new laptop with Windows 11, I felt that my older journaling app (
-          <i className="underline underline-offset-2">"&iary"</i> built in Tkinter){' '}
+          <i className="underline underline-offset-2">&quot;\&iary&quot;</i> built in Tkinter){' '}
           <i className="underline underline-offset-2">looked outdated</i> and lacked formatting
           options. I also wanted a feature to view past entries with a searchable interface.
         </p>

@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 
-export default function TOC() {
+export default function TOC({ blogPage = false }: { blogPage?: boolean }) {
   const [headings, setHeadings] = useState<{ id: string; text: string }[]>([])
   const [activeId, setActiveId] = useState<string | null>(null)
 
@@ -14,11 +14,22 @@ export default function TOC() {
     const newHeadings: { id: string; text: string }[] = []
 
     h2s?.forEach((h2, index) => {
-      if (!h2.id) h2.id = `heading-${index}`
-      newHeadings.push({
-        id: h2.id,
-        text: h2.textContent || `Heading ${index}`,
-      })
+      const container = h2.closest('section')
+      if (!container) {
+        if (!h2.id) h2.id = `heading-${index}`
+        newHeadings.push({
+          id: h2.id,
+          text: h2.textContent || `Heading ${index}`,
+        })
+      } else {
+        if (!container.id) {
+          container.id = `section-${index}`
+        }
+        newHeadings.push({
+          id: container.id,
+          text: h2.textContent || `Heading ${index}`,
+        })
+      }
     })
 
     setHeadings(newHeadings)
@@ -35,14 +46,21 @@ export default function TOC() {
         })
       },
       {
-        rootMargin: '0px 0px -70% 0px', // triggers slightly before fully in view
+        rootMargin: blogPage ? '-40% 0px -50% 0px' : '0px 0px -70% 0px', // triggers slightly before fully in view
         threshold: 0,
       },
     )
 
     const mainEl = document.getElementById('main')
     const h2s = mainEl?.querySelectorAll(':scope h2')
-    h2s?.forEach((el) => observer.observe(el))
+    h2s?.forEach((el) => {
+      const container = el.closest('section')
+      if (!container) {
+        observer.observe(el)
+      } else {
+        observer.observe(container)
+      }
+    })
 
     return () => observer.disconnect()
   }, [headings])
@@ -58,8 +76,8 @@ export default function TOC() {
             <a
               href={`#${h.id}`}
               className={cn(
-                'relative pl-8 focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs transition-all',
-                activeId === h.id && 'pl-11',
+                'relative block pl-8 focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs transition-all pr-3',
+                activeId === h.id && 'pl-11 pr-0',
               )}
             >
               {h.text}
