@@ -14,7 +14,6 @@ export default async function BlogPage() {
     depth: 1,
     limit: 8,
   })
-  console.log(blogPosts.docs[0].coverImage)
 
   return (
     <>
