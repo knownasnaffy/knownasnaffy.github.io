@@ -5,15 +5,10 @@ import Languages from './languages'
 import ProjectsList from './projects-list'
 import Skills from './skills'
 
-export default function Portfolio({
-  mainRef,
-}: {
-  mainRef: React.RefObject<HTMLDivElement | null>
-}) {
+export default function Portfolio({}: {}) {
   return (
     <div
       id="main"
-      ref={mainRef}
       className="px-6 sm:px-8 py-8 prose prose-sm dark:prose-invert prose-h1:mb-0 prose-h1:border-b prose-h1:pb-4 max-w-2xl md:mx-auto prose-h2:mt-9 prose-h2:scroll-m-9"
     >
       <h1 className="">Portfolio</h1>
