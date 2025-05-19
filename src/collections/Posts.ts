@@ -1,3 +1,5 @@
+import { CodeBlock } from '@/blocks/code-block'
+import { BlocksFeature, FixedToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
 
 export const Posts: CollectionConfig = {
@@ -31,6 +33,15 @@ export const Posts: CollectionConfig = {
       name: 'content',
       type: 'richText',
       required: true,
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          FixedToolbarFeature(),
+          BlocksFeature({
+            blocks: [CodeBlock],
+          }),
+        ],
+      }),
     },
   ],
 }

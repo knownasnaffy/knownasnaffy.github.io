@@ -82,6 +82,52 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.871 0.006 286.286);
+
+  --shiki-foreground: var(--color-neutral-100);
+  --shiki-background: var(--color-neutral-900);
+  --shiki-token-constant: var(--color-red-400);
+  --shiki-token-string: var(--color-green-400);
+  --shiki-token-comment: var(--color-neutral-500);
+  --shiki-token-keyword: var(--color-blue-400);
+  --shiki-token-parameter: var(--color-yellow-400);
+  --shiki-token-function: var(--color-sky-400);
+  --shiki-token-string-expression: var(--color-emerald-400);
+  --shiki-token-punctuation: var(--color-neutral-300);
+  --shiki-token-link: var(--color-indigo-400);
+
+  /* ANSI */
+  --shiki-ansi-black: var(--color-neutral-950);
+  --shiki-ansi-black-dim: var(--color-neutral-800);
+  --shiki-ansi-red: var(--color-red-500);
+  --shiki-ansi-red-dim: var(--color-red-700);
+  --shiki-ansi-green: var(--color-green-500);
+  --shiki-ansi-green-dim: var(--color-green-700);
+  --shiki-ansi-yellow: var(--color-yellow-500);
+  --shiki-ansi-yellow-dim: var(--color-yellow-700);
+  --shiki-ansi-blue: var(--color-blue-500);
+  --shiki-ansi-blue-dim: var(--color-blue-700);
+  --shiki-ansi-magenta: var(--color-fuchsia-500);
+  --shiki-ansi-magenta-dim: var(--color-fuchsia-700);
+  --shiki-ansi-cyan: var(--color-cyan-500);
+  --shiki-ansi-cyan-dim: var(--color-cyan-700);
+  --shiki-ansi-white: var(--color-neutral-100);
+  --shiki-ansi-white-dim: var(--color-neutral-300);
+  --shiki-ansi-bright-black: var(--color-neutral-600);
+  --shiki-ansi-bright-black-dim: var(--color-neutral-700);
+  --shiki-ansi-bright-red: var(--color-red-400);
+  --shiki-ansi-bright-red-dim: var(--color-red-700);
+  --shiki-ansi-bright-green: var(--color-green-400);
+  --shiki-ansi-bright-green-dim: var(--color-green-700);
+  --shiki-ansi-bright-yellow: var(--color-yellow-300);
+  --shiki-ansi-bright-yellow-dim: var(--color-yellow-700);
+  --shiki-ansi-bright-blue: var(--color-blue-400);
+  --shiki-ansi-bright-blue-dim: var(--color-blue-800);
+  --shiki-ansi-bright-magenta: var(--color-fuchsia-400);
+  --shiki-ansi-bright-magenta-dim: var(--color-fuchsia-800);
+  --shiki-ansi-bright-cyan: var(--color-cyan-300);
+  --shiki-ansi-bright-cyan-dim: var(--color-cyan-900);
+  --shiki-ansi-bright-white: var(--color-white);
+  --shiki-ansi-bright-white-dim: var(--color-neutral-200);
 }
 
 .dark {

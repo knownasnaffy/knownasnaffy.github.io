@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function TOC({ blogPage = false }: { blogPage?: boolean }) {
@@ -46,7 +47,7 @@ export default function TOC({ blogPage = false }: { blogPage?: boolean }) {
         })
       },
       {
-        rootMargin: blogPage ? '-40% 0px -50% 0px' : '0px 0px -70% 0px', // triggers slightly before fully in view
+        rootMargin: blogPage ? '-40% 0px -50% 0px' : '0px 0px -80% 0px',
         threshold: 0,
       },
     )
@@ -73,12 +74,13 @@ export default function TOC({ blogPage = false }: { blogPage?: boolean }) {
       <ul className="mt-2 space-y-1 text-sm pr-8">
         {headings.map((h) => (
           <li key={h.id}>
-            <a
+            <Link
               href={`#${h.id}`}
               className={cn(
                 'relative block pl-8 focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs transition-all pr-3',
                 activeId === h.id && 'pl-11 pr-0',
               )}
+              replace
             >
               {h.text}
               <span
@@ -87,7 +89,7 @@ export default function TOC({ blogPage = false }: { blogPage?: boolean }) {
                   activeId === h.id ? 'block' : 'hidden',
                 )}
               />
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

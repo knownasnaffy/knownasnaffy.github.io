@@ -6,7 +6,14 @@ import { usePathname } from 'next/navigation'
 
 export default function HomeNBlogLink() {
   const pathname = usePathname()
-  if (pathname.startsWith('/blog'))
+  if (pathname === '/')
+    return (
+      <SidebarLink href="/blog" newTab={false}>
+        <Rss className="size-4" />
+        Blog posts
+      </SidebarLink>
+    )
+  else if (pathname === '/blog')
     return (
       <SidebarLink href="/" newTab={false}>
         <House className="size-4" />
@@ -15,9 +22,15 @@ export default function HomeNBlogLink() {
     )
   else
     return (
-      <SidebarLink href="/blog" newTab={false}>
-        <Rss className="size-4" />
-        Blog posts
-      </SidebarLink>
+      <>
+        <SidebarLink href="/" newTab={false}>
+          <House className="size-4" />
+          Home
+        </SidebarLink>
+        <SidebarLink href="/blog" newTab={false}>
+          <Rss className="size-4" />
+          Blog posts
+        </SidebarLink>
+      </>
     )
 }
