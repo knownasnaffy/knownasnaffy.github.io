@@ -95,23 +95,27 @@ export default async function BlogPost({
         <RichText converters={jsxConverter} data={post.content} />
         <h2 className="pt-10">Latest Posts</h2>
         <div className="pt-2 flex flex-col gap-4 md:gap-2">
-          {latestPosts.map((post) => (
-            <div key={post.slug} className="flex gap-4">
-              <Image
-                src={(post.coverImage as Media).url || ''}
-                alt={post.title}
-                height={720}
-                width={1280}
-                className="h-24 mt-0 mb-0 w-auto border rounded-sm"
-              />
-              <div className="flex flex-col ">
-                <h3 className="mt-2">{post.title}</h3>
-                <p className="overflow-hidden hidden lg:block max-w-[400px] text-ellipsis whitespace-nowrap w-full">
-                  {post.description}
-                </p>
+          {latestPosts.length ? (
+            latestPosts.map((post) => (
+              <div key={post.slug} className="flex gap-4">
+                <Image
+                  src={(post.coverImage as Media).url || ''}
+                  alt={post.title}
+                  height={720}
+                  width={1280}
+                  className="h-24 mt-0 mb-0 w-auto border rounded-sm"
+                />
+                <div className="flex flex-col ">
+                  <h3 className="mt-2">{post.title}</h3>
+                  <p className="overflow-hidden hidden lg:block max-w-[400px] text-ellipsis whitespace-nowrap w-full">
+                    {post.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <div className="text-muted-foreground">Nothing here yet (◡︵◡)</div>
+          )}
         </div>
       </div>
       <TOC />
