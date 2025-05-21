@@ -177,7 +177,6 @@ export interface Post {
     };
     [k: string]: unknown;
   };
-  code?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -286,7 +285,6 @@ export interface PostsSelect<T extends boolean = true> {
   coverImage?: T;
   description?: T;
   content?: T;
-  code?: T;
   updatedAt?: T;
   createdAt?: T;
 }

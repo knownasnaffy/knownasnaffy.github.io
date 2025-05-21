@@ -1,4 +1,5 @@
 import { Block } from 'payload'
+import { bundledLanguagesInfo } from 'shiki'
 
 export const CodeBlock: Block = {
   slug: 'code-block',
@@ -14,20 +15,7 @@ export const CodeBlock: Block = {
           name: 'language',
           type: 'select',
           defaultValue: 'none',
-          options: [
-            {
-              label: 'None',
-              value: 'none',
-            },
-            {
-              label: 'JavaScript',
-              value: 'js',
-            },
-            {
-              label: 'TypeScript',
-              value: 'ts',
-            },
-          ],
+          options: bundledLanguagesInfo.map((item) => ({ label: item.name, value: item.id })),
         },
         {
           name: 'label',

@@ -1,6 +1,6 @@
 import { JSXConverters } from '@payloadcms/richtext-lexical/react'
 import { SerializedBlockNode } from '@payloadcms/richtext-lexical'
-import { createCssVariablesTheme, createHighlighter } from 'shiki'
+import { bundledLanguagesInfo, createCssVariablesTheme, createHighlighter } from 'shiki'
 
 type CodeBlockFields = {
   code: string
@@ -19,7 +19,7 @@ export const codeBlockConverter: JSXConverters<SerializedBlockNode> = {
       })
 
       const highlighter = await createHighlighter({
-        langs: ['javascript', 'typescript', 'json', 'css', 'html'],
+        langs: bundledLanguagesInfo.map((item) => item.id),
         themes: [myTheme], // register the theme
       })
       const html = highlighter.codeToHtml(node.fields.code, {
