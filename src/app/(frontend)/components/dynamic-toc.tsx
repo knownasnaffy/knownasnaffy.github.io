@@ -15,6 +15,7 @@ export default function TOC({ blogPage = false }: { blogPage?: boolean }) {
     const newHeadings: { id: string; text: string }[] = []
 
     h2s?.forEach((h2, index) => {
+      if (h2.innerHTML === 'Latest Posts') return
       const container = h2.closest('section')
       if (!container) {
         if (!h2.id) h2.id = `heading-${index}`
