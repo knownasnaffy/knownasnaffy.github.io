@@ -180,7 +180,7 @@ export default function ProjectsList() {
           <AccordionPrimitive.Header className="flex">
             <AccordionPrimitive.Trigger className="focus-visible:ring-0 grid gap-1 rounded-md py-2 w-full text-left text-base leading-6 font-semibold transition-all outline-none [&_svg>path:last-child]:origin-center [&_svg>path:last-child]:transition-all [&_svg>path:last-child]:duration-200 [&[data-state=open]_svg]:rotate-180 [&[data-state=open]_svg>path:last-child]:rotate-90 [&[data-state=open]_svg>path:last-child]:opacity-0 hover:cursor-pointer">
               <span className="flex items-start lg:items-center justify-start w-full">
-                <span className="flex flex-col lg:flex-row">
+                <span className="text-foreground flex flex-col lg:flex-row">
                   {item.title}
                   <span className="text-muted-foreground text-sm lg:ml-2 leading-[inherit] font-normal">
                     {item.timeline}
@@ -188,11 +188,11 @@ export default function ProjectsList() {
                 </span>
                 <PlusIcon
                   size={16}
-                  className="pointer-events-none shrink-0 opacity-60 transition-transform duration-200 ml-auto max-lg:my-1"
+                  className="text-muted-foreground pointer-events-none shrink-0 opacity-60 transition-transform duration-200 ml-auto max-lg:my-1"
                   aria-hidden="true"
                 />
               </span>
-              <span className="text-[#D1D5DC] text-sm font-normal">
+              <span className="text-secondary-foreground text-sm font-normal">
                 {item.description}
               </span>
             </AccordionPrimitive.Trigger>

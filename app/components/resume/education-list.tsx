@@ -20,30 +20,38 @@ const items = [
     ),
     content: (
       <>
-        <h4 className="font-bold">Highlights:</h4>
-        <p>
+        <h4 className="font-bold text-foreground">Highlights:</h4>
+        <p className="text-secondary-foreground">
           <ul>
             <li className="flex items-start">
-              <span className="mr-3.5 ml-1 text-[#4A5565]">•</span>
+              <span className="mr-3.5 ml-1 text-muted-foreground">•</span>
               <span>
-                <i className="underline underline-offset-2">Selected</i> for the
-                college{" "}
-                <i className="underline underline-offset-2">ERP development</i>{" "}
+                <i className="text-foreground underline underline-offset-2">
+                  Selected
+                </i>{" "}
+                for the college{" "}
+                <i className="text-foreground underline underline-offset-2">
+                  ERP development
+                </i>{" "}
                 team in the first semester.
               </span>
             </li>
             <li className="flex items-start">
-              <span className="mr-3.5 ml-1 text-[#4A5565]">•</span>
+              <span className="mr-3.5 ml-1 text-muted-foreground">•</span>
               <span>
                 Secured{" "}
-                <i className="underline underline-offset-2">2nd place</i> in an
-                internal college{" "}
-                <i className="underline underline-offset-2">hackathon</i> (Oct
-                2024).
+                <i className="text-foreground underline underline-offset-2">
+                  2nd place
+                </i>{" "}
+                in an internal college{" "}
+                <i className="text-foreground underline underline-offset-2">
+                  hackathon
+                </i>{" "}
+                (Oct 2024).
               </span>
             </li>
             <li className="flex items-start">
-              <span className="mr-3.5 ml-1 text-[#4A5565]">•</span>
+              <span className="mr-3.5 ml-1 text-muted-foreground">•</span>
               <span>
                 Co-coordinated the Science Day celebration event (Mar 2025),
                 managing planning and logistics with a peer.
@@ -80,7 +88,7 @@ export default function EducationList() {
           <AccordionPrimitive.Header className="flex">
             <AccordionPrimitive.Trigger className="focus-visible:ring-0 grid gap-1 rounded-md py-2 w-full text-left text-base leading-6 font-semibold transition-all outline-none [&_svg>path:last-child]:origin-center [&_svg>path:last-child]:transition-all [&_svg>path:last-child]:duration-200 [&[data-state=open]_svg]:rotate-180 [&[data-state=open]_svg>path:last-child]:rotate-90 [&[data-state=open]_svg>path:last-child]:opacity-0 hover:cursor-pointer">
               <span className="flex items-start lg:items-center justify-start w-full">
-                <span className="flex flex-col lg:flex-row">
+                <span className="text-foreground flex flex-col lg:flex-row">
                   {item.title}
                   <span className="text-muted-foreground text-sm lg:ml-2 leading-[inherit] font-normal">
                     {item.timeline}
@@ -88,17 +96,17 @@ export default function EducationList() {
                 </span>
                 <PlusIcon
                   size={16}
-                  className="pointer-events-none shrink-0 opacity-60 transition-transform duration-200 ml-auto max-lg:my-1"
+                  className="text-muted-foreground pointer-events-none shrink-0 opacity-60 transition-transform duration-200 ml-auto max-lg:my-1"
                   aria-hidden="true"
                 />
               </span>
-              <span className="text-[#D1D5DC] text-sm font-normal">
+              <span className="text-secondary-foreground text-sm font-normal">
                 {item.description}
               </span>
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>
           {/*  NOTE: `prose-h4:font-bold` not working in the classname  */}
-          <AccordionContent className="prose prose-sm dark:prose-invert py-2">
+          <AccordionContent className="prose prose-sm dark:prose-invert py-2 text-secondary-foreground">
             {item.content}
           </AccordionContent>
         </AccordionItem>

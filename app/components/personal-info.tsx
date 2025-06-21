@@ -12,7 +12,9 @@ export default function PersonalInfo() {
         <h1 id="profile-heading" className="text-2xl font-bold">
           Barinderpreet Singh
         </h1>
-        <p className="text-sm text-[#D1D5DC]">Full-stack Developer</p>
+        <p className="text-sm text-secondary-foreground">
+          Full-stack Developer
+        </p>
       </section>
 
       <SidebarSection
@@ -54,22 +56,6 @@ export default function PersonalInfo() {
           </>
         }
       />
-
-      <SidebarSection
-        title="Quick Links"
-        items={
-          <>
-            <SidebarLink href="/blog" newTab={false}>
-              <Rss className="size-4" />
-              Blog posts
-            </SidebarLink>
-            <SidebarLink href="/fancy" newTab={false}>
-              <Palette className="size-4" />
-              Prefer colors?
-            </SidebarLink>
-          </>
-        }
-      />
     </aside>
   );
 }
@@ -86,7 +72,7 @@ const SidebarSection = ({
       aria-labelledby={`${title}-heading`}
       className="space-y-2 prose-sm"
     >
-      <h2 id={`${title}-heading`} className="font-bold ">
+      <h2 id={`${title}-heading`} className="font-bold">
         {title}
       </h2>
       <ul className="mt-1 space-y-0 list-none pl-0">{items}</ul>
@@ -104,7 +90,7 @@ const SidebarLink = ({
   children: React.ReactNode;
 }) => {
   const linkStyle =
-    "text-sm focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs text-[#D1D5DC] hover:text-white transition-all hover:underline underline-offset-2 inline-flex items-center gap-2";
+    "text-sm focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs text-secondary-foreground hover:text-foreground transition-all hover:underline underline-offset-2 inline-flex items-center gap-2";
 
   return (
     <li className="pl-0">

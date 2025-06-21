@@ -49,18 +49,21 @@ export default function Skills() {
     <>
       {skills.map((group) => (
         <React.Fragment key={group.groupName}>
-          <h4>{group.groupName}:</h4>
+          <h4 className="text-foreground">{group.groupName}:</h4>
           <span className="flex flex-wrap gap-2">
             {group.primary.map((item) => (
               <span
                 key={item}
-                className="px-2 py-1 text-xs rounded-sm bg-white text-black"
+                className="px-2 py-1 text-xs rounded-sm bg-foreground text-primary-foreground"
               >
                 {item}
               </span>
             ))}
             {group.secondary.map((item) => (
-              <span key={item} className="px-2 py-1 text-xs rounded-sm border">
+              <span
+                key={item}
+                className="px-2 py-1 text-xs rounded-sm border text-secondary-foreground"
+              >
                 {item}
               </span>
             ))}

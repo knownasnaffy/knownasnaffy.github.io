@@ -16,15 +16,15 @@ export default function Languages() {
       {languages.map((item) => (
         <span key={item.language}>
           <span className="flex justify-between w-full">
-            <h4 className="mt-0">{item.language}</h4>
-            <span>{item.remark}</span>
+            <h4 className="mt-0 text-foreground">{item.language}</h4>
+            <span className="text-secondary-foreground">{item.remark}</span>
           </span>
           <span className="grid grid-cols-5 h-3 gap-1 sm:gap-2">
             {getSteps(item.proficieny).map((item, index) => (
               <span
                 key={index}
                 className={cn(
-                  item ? "bg-[#D1D5DC]" : "bg-muted",
+                  item ? "bg-foreground" : "bg-muted",
                   "rounded-xs",
                   index === 0 && "rounded-l-sm",
                   index === 4 && "rounded-r-sm"
