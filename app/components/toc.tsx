@@ -54,7 +54,7 @@ export default function TOC({
           <a
             href={`#${h.id}`}
             className={cn(
-              "text-muted-foreground hover:text-secondary-foreground focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs transition-all",
+              "text-secondary-foreground/80 hover:text-secondary-foreground focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs transition-all",
               activeId === h.id && "text-foreground"
             )}
           >
