@@ -1,4 +1,5 @@
 import React from "react";
+import { cn } from "~/lib/utils";
 
 const skills = [
   {
@@ -52,20 +53,22 @@ export default function Skills() {
           <h4 className="text-foreground">{group.groupName}:</h4>
           <span className="flex flex-wrap gap-2">
             {group.primary.map((item) => (
-              <span
-                key={item}
-                className="px-2 py-1 text-xs rounded-sm bg-foreground text-primary-foreground"
-              >
-                {item}
-              </span>
+              <React.Fragment key={item}>
+                <span className="px-2 py-1 text-xs rounded-sm bg-foreground text-primary-foreground">
+                  {item}
+                </span>
+                <span className="sr-only">{", "}</span>
+              </React.Fragment>
             ))}
-            {group.secondary.map((item) => (
-              <span
-                key={item}
-                className="px-2 py-1 text-xs rounded-sm border text-secondary-foreground"
-              >
-                {item}
-              </span>
+            {group.secondary.map((item, index, items) => (
+              <React.Fragment key={item}>
+                <span className="px-2 py-1 text-xs rounded-sm border text-secondary-foreground">
+                  {item}
+                </span>
+                {index === items.length - 1 && (
+                  <span className={cn("sr-only")}>{", "}</span>
+                )}
+              </React.Fragment>
             ))}
           </span>
         </React.Fragment>
