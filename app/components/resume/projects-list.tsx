@@ -198,7 +198,7 @@ export default function ProjectsList() {
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>
           {/*  NOTE: `prose-h4:font-bold` not working in the classname  */}
-          <AccordionContent className="prose prose-sm dark:prose-invert py-2">
+          <AccordionContent className="prose prose-sm dark:prose-invert py-2 text-secondary-foreground prose-h4:text-foreground [&_i]:text-foreground">
             {item.content}
           </AccordionContent>
         </AccordionItem>

@@ -24,7 +24,7 @@ export default function Languages() {
               <span
                 key={index}
                 className={cn(
-                  item ? "bg-foreground" : "bg-muted",
+                  item ? "bg-foreground" : "bg-border",
                   "rounded-xs",
                   index === 0 && "rounded-l-sm",
                   index === 4 && "rounded-r-sm"
