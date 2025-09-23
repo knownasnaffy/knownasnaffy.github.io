@@ -11,6 +11,7 @@ import { format, parseISO } from 'date-fns'
 import { Calendar } from 'lucide-react'
 import TOC from '../../components/dynamic-toc'
 import { jsxConverter } from '@/lib/converters/jsx-converter'
+import { getSiteUrl } from '@/lib/utils'
 
 async function getPostBySlug(slug: string) {
   const payloadConfig = await config
@@ -46,6 +47,8 @@ async function getLatestPosts(slug: string): Promise<Post[]> {
   return blogPosts.docs
 }
 
+const siteUrl = getSiteUrl()
+
 export async function generateMetadata({
   params,
 }: {
@@ -55,8 +58,21 @@ export async function generateMetadata({
   if (!post) return {}
 
   return {
-    title: post.title,
+    title: post.title + ' · Blog · Barinderpreet Singh',
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description || '',
+      url: `${siteUrl}/blog/${post.slug}`,
+      images: [
+        {
+          url:
+            typeof post.coverImage === 'string'
+              ? post.coverImage
+              : post.coverImage.url || `${siteUrl}/og-image-blog.png`,
+        },
+      ],
+    },
   }
 }
 

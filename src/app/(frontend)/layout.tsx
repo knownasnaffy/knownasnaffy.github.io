@@ -1,12 +1,46 @@
 import { Inter } from 'next/font/google'
 import React from 'react'
 import './styles.css'
-import { cn } from '@/lib/utils'
+import { cn, getSiteUrl } from '@/lib/utils'
 import PersonalInfo from './components/personal-info'
+import { Metadata } from 'next'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+const siteUrl = getSiteUrl()
+
+export const metadata: Metadata = {
+  title: 'Barinderpreet Singh · Portfolio',
+  description: 'Portfolio of Barinderpreet Singh, web developer.',
+  keywords: [
+    'Barinderpreet Singh',
+    'full-stack developer',
+    'web development',
+    'React',
+    'Tailwind',
+    'TypeScript',
+    'Portfolio',
+    'Punjab',
+    'Next.js',
+    'Open source',
+  ],
+  openGraph: {
+    title: 'Barinderpreet Singh · Portfolio',
+    description: 'Full-stack developer portfolio.',
+    url: siteUrl,
+    images: [
+      {
+        url: `${siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Barinderpreet Singh Portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Barinderpreet Singh · Portfolio',
+    description: 'Showcase of skills and highlights.',
+    images: [`${siteUrl}/og-image.png`],
+  },
 }
 
 const inter = Inter({

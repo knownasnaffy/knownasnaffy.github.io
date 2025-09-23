@@ -1,9 +1,21 @@
-'use server'
-
 import config from '@/payload.config'
 import { getPayload } from 'payload'
 import PostItem from './components/post-item'
 import TOC from '../components/dynamic-toc'
+import { getSiteUrl } from '@/lib/utils'
+
+const siteUrl = getSiteUrl()
+
+export const metadata = {
+  title: 'Blog · Barinderpreet Singh',
+  description: 'Technical articles and notes.',
+  openGraph: {
+    title: 'Blog · Barinderpreet Singh',
+    description: 'Read professional blog posts.',
+    url: `${siteUrl}/blog`,
+    images: [{ url: `${siteUrl}/og-image-blog.png` }],
+  },
+}
 
 export default async function BlogPage() {
   const payloadConfig = await config
