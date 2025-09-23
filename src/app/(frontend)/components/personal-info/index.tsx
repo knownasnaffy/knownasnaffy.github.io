@@ -1,5 +1,5 @@
 import { GithubIcon, LinkedInIcon } from '@/lib/social-icons'
-import { MailIcon, MapPin, Palette } from 'lucide-react'
+import { MailIcon, MapPin } from 'lucide-react'
 import SidebarSection from './sidebar-section'
 import SidebarLink from './sidebar-link'
 import HomeNBlogLink from './home-n-blog-link'
@@ -56,10 +56,10 @@ export default function PersonalInfo() {
         items={
           <>
             <HomeNBlogLink />
-            <SidebarLink href="/fancy" newTab={false}>
-              <Palette className="size-4" />
-              Prefer colors?
-            </SidebarLink>
+            {/* <SidebarLink href="/fancy" newTab={false}> */}
+            {/*   <Palette className="size-4" /> */}
+            {/*   Prefer colors? */}
+            {/* </SidebarLink> */}
           </>
         }
       />
