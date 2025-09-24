@@ -41,7 +41,7 @@ export default function ExpandableCodeBlock({
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             className={cn(
-              'peer w-full bg-foreground hover:brightness-75 text-background text-sm font-medium py-2 px-4 transition-colors duration-200 flex items-center justify-center gap-2',
+              'peer w-full bg-foreground hover:brightness-90 text-background text-sm font-medium py-2 px-4 transition-colors duration-200 flex items-center justify-center gap-2',
               isExpanded ? 'rounded-sm' : 'rounded-b-sm',
             )}
             aria-label={isExpanded ? 'Collapse code block' : 'Expand code block'}
