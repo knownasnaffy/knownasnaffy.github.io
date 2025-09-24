@@ -12,7 +12,7 @@ import { Calendar } from 'lucide-react'
 import TOC from '../../components/dynamic-toc'
 import { jsxConverter } from '@/lib/converters/jsx-converter'
 import { getSiteUrl } from '@/lib/utils'
-import Link from 'next/link'
+import LatestPostItem from './components/latest-post-item'
 
 async function getPostBySlug(slug: string) {
   const payloadConfig = await config
@@ -113,27 +113,7 @@ export default async function BlogPost({
         <h2 className="pt-10">Latest Posts</h2>
         <div className="pt-2 flex flex-col gap-4 md:gap-2">
           {latestPosts.length ? (
-            latestPosts.map((post) => (
-              <div key={post.slug} className="flex gap-4">
-                <Link href={`/blog/${post.slug}`}>
-                  <Image
-                    src={(post.coverImage as Media).url || ''}
-                    alt={post.title}
-                    height={720}
-                    width={1280}
-                    className="h-24 mt-0 mb-0 w-auto border rounded-sm hover:opacity-75"
-                  />
-                </Link>
-                <div className="flex flex-col ">
-                  <Link href={`/blog/${post.slug}`}>
-                    <h3 className="mt-2 hover:opacity-75">{post.title}</h3>
-                  </Link>
-                  <p className="overflow-hidden hidden lg:block max-w-[400px] text-ellipsis whitespace-nowrap w-full">
-                    {post.description}
-                  </p>
-                </div>
-              </div>
-            ))
+            latestPosts.map((post) => <LatestPostItem post={post} key={post.slug} />)
           ) : (
             <div className="text-muted-foreground">Nothing here yet (◡︵◡)</div>
           )}
