@@ -73,26 +73,30 @@ export default function TOC({ blogPage = false }: { blogPage?: boolean }) {
         ON THIS PAGE
       </h3>
       <ul className="mt-2 space-y-1 text-sm pr-8">
-        {headings.map((h) => (
-          <li key={h.id}>
-            <Link
-              href={`#${h.id}`}
-              className={cn(
-                'relative block pl-8 focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs transition-all pr-3',
-                activeId === h.id && 'pl-11 pr-0',
-              )}
-              replace
-            >
-              {h.text}
-              <span
+        {headings.length !== 0 ? (
+          headings.map((h) => (
+            <li key={h.id}>
+              <Link
+                href={`#${h.id}`}
                 className={cn(
-                  'bg-foreground absolute inset-y-0.5 w-0.5 left-8 rounded-sm transition-all',
-                  activeId === h.id ? 'block' : 'hidden',
+                  'relative block pl-8 focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-[3px] ring-offset-2 ring-offset-background rounded-xs transition-all pr-3',
+                  activeId === h.id && 'pl-11 pr-0',
                 )}
-              />
-            </Link>
-          </li>
-        ))}
+                replace
+              >
+                {h.text}
+                <span
+                  className={cn(
+                    'bg-foreground absolute inset-y-0.5 w-0.5 left-8 rounded-sm transition-all',
+                    activeId === h.id ? 'block' : 'hidden',
+                  )}
+                />
+              </Link>
+            </li>
+          ))
+        ) : (
+          <li className="px-8 text-muted-foreground">No headings found</li>
+        )}
       </ul>
     </aside>
   )
