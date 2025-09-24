@@ -5,6 +5,7 @@ import { cn, getSiteUrl } from '@/lib/utils'
 import PersonalInfo from './components/personal-info'
 import { Metadata } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { AppProgressProvider as ProgressProvider } from '@bprogress/next'
 
 const siteUrl = getSiteUrl()
 
@@ -54,10 +55,17 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={cn(inter.className, 'dark')}>
-        <main className="relative max-w-7xl mx-auto grid md:grid-cols-[296px_1fr] lg:grid-cols-[340px_1fr] xl:grid-cols-[300px_1fr_300px] min-h-screen">
-          <PersonalInfo />
-          {children}
-        </main>
+        <ProgressProvider
+          height="4px"
+          color="#ffffff"
+          options={{ showSpinner: false }}
+          shallowRouting
+        >
+          <main className="relative max-w-7xl mx-auto grid md:grid-cols-[296px_1fr] lg:grid-cols-[340px_1fr] xl:grid-cols-[300px_1fr_300px] min-h-screen">
+            <PersonalInfo />
+            {children}
+          </main>
+        </ProgressProvider>
         <SpeedInsights />
       </body>
     </html>
