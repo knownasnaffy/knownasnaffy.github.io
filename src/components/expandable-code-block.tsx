@@ -27,7 +27,7 @@ export default function ExpandableCodeBlock({
         {label} <span className="italic text-muted-foreground text-xs ml-1">{language}</span>
       </div>
       <div
-        className={`text-base custom-pre [&>pre]:rounded-tl-none overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`text-base custom-pre [&>pre]:rounded-md [&>pre]:rounded-tl-none overflow-hidden transition-all duration-300 ease-in-out ${
           shouldCollapse && !isExpanded ? 'max-h-96' : 'max-h-none'
         }`}
         dangerouslySetInnerHTML={{ __html: html }}
