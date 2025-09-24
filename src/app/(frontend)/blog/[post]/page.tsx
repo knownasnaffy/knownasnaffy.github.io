@@ -104,7 +104,7 @@ export default async function BlogPost({
           height={720}
           className="w-full h-auto border rounded-md mt-0 mb-6"
         />
-        <h1 className="max-sm:text-2xl">{post.title}</h1>
+        <h1 className="max-sm:text-2xl leading-10">{post.title}</h1>
         <p className="inline-flex items-center mb-0">
           <Calendar className="size-4 mr-2 -mt-1" />
           Created at: {format(parseISO(post.createdAt), 'MMMM d, yyyy')}
