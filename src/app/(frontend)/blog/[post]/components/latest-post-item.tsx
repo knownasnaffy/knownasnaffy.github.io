@@ -1,3 +1,5 @@
+'use client's
+
 import { Media, Post } from '@/payload-types'
 import { useRouter } from '@bprogress/next'
 import Image from 'next/image'
