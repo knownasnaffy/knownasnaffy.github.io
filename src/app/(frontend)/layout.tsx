@@ -4,6 +4,7 @@ import './styles.css'
 import { cn, getSiteUrl } from '@/lib/utils'
 import PersonalInfo from './components/personal-info'
 import { Metadata } from 'next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const siteUrl = getSiteUrl()
 
@@ -57,6 +58,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           <PersonalInfo />
           {children}
         </main>
+        <SpeedInsights />
       </body>
     </html>
   )
