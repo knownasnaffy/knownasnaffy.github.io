@@ -1,4 +1,4 @@
-'use client's
+'use client'
 
 import { Media, Post } from '@/payload-types'
 import { useRouter } from '@bprogress/next'
