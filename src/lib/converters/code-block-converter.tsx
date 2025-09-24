@@ -1,6 +1,7 @@
-import { JSXConverters } from '@payloadcms/richtext-lexical/react'
-import { SerializedBlockNode } from '@payloadcms/richtext-lexical'
-import { bundledLanguagesInfo, createCssVariablesTheme, createHighlighter } from 'shiki'
+import type { SerializedBlockNode } from '@payloadcms/richtext-lexical'
+import type { JSXConverters } from '@payloadcms/richtext-lexical/react'
+import { createHighlighter, createCssVariablesTheme, bundledLanguagesInfo } from 'shiki'
+import ExpandableCodeBlock from '@/components/expandable-code-block'
 
 type CodeBlockFields = {
   code: string
@@ -11,6 +12,7 @@ type CodeBlockFields = {
 export const codeBlockConverter: JSXConverters<SerializedBlockNode> = {
   blocks: {
     'code-block': async ({ node }: { node: { fields: CodeBlockFields } }) => {
+      // Do all the heavy lifting on the server
       const myTheme = createCssVariablesTheme({
         name: 'css-variables',
         variablePrefix: '--shiki-',
@@ -20,13 +22,26 @@ export const codeBlockConverter: JSXConverters<SerializedBlockNode> = {
 
       const highlighter = await createHighlighter({
         langs: bundledLanguagesInfo.map((item) => item.id),
-        themes: [myTheme], // register the theme
+        themes: [myTheme],
       })
+
       const html = highlighter.codeToHtml(node.fields.code, {
         lang: node.fields.language,
         theme: 'css-variables',
       })
-      return <div className="text-base custom-pre" dangerouslySetInnerHTML={{ __html: html }} />
+
+      // Count lines for the client component
+      const lineCount = node.fields.code.split('\n').length
+
+      // Pass the pre-rendered HTML and metadata to the client component
+      return (
+        <ExpandableCodeBlock 
+          html={html}
+          lineCount={lineCount}
+          language={node.fields.language}
+          label={node.fields.label}
+        />
+      )
     },
   },
 }
