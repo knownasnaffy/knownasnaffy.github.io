@@ -1,10 +1,10 @@
 'use client'
 
 import { Media, Post } from '@/payload-types'
+import { useRouter } from '@bprogress/next'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 export default function PostItem({ item }: { item: Post }) {
   const router = useRouter()
