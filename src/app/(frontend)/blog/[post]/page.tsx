@@ -12,6 +12,7 @@ import { Calendar } from 'lucide-react'
 import TOC from '../../components/dynamic-toc'
 import { jsxConverter } from '@/lib/converters/jsx-converter'
 import { getSiteUrl } from '@/lib/utils'
+import Link from 'next/link'
 
 async function getPostBySlug(slug: string) {
   const payloadConfig = await config
@@ -114,15 +115,19 @@ export default async function BlogPost({
           {latestPosts.length ? (
             latestPosts.map((post) => (
               <div key={post.slug} className="flex gap-4">
-                <Image
-                  src={(post.coverImage as Media).url || ''}
-                  alt={post.title}
-                  height={720}
-                  width={1280}
-                  className="h-24 mt-0 mb-0 w-auto border rounded-sm"
-                />
+                <Link href={`/blog/${post.slug}`}>
+                  <Image
+                    src={(post.coverImage as Media).url || ''}
+                    alt={post.title}
+                    height={720}
+                    width={1280}
+                    className="h-24 mt-0 mb-0 w-auto border rounded-sm hover:opacity-75"
+                  />
+                </Link>
                 <div className="flex flex-col ">
-                  <h3 className="mt-2">{post.title}</h3>
+                  <Link href={`/blog/${post.slug}`}>
+                    <h3 className="mt-2 hover:opacity-75">{post.title}</h3>
+                  </Link>
                   <p className="overflow-hidden hidden lg:block max-w-[400px] text-ellipsis whitespace-nowrap w-full">
                     {post.description}
                   </p>
