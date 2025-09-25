@@ -36,12 +36,12 @@ export default function ExpandableCodeBlock({
       {shouldCollapse && (
         <div className={cn(!isExpanded ? 'absolute bottom-0 left-0 right-0' : 'mt-2')}>
           {!isExpanded && (
-            <div className="bg-gradient-to-t from-foreground to-transparent h-4 pointer-events-none peer-hover:brightness-75" />
+            <div className="bg-gradient-to-t from-foreground to-transparent h-4 pointer-events-none" />
           )}
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             className={cn(
-              'peer w-full bg-foreground hover:brightness-90 text-background text-sm font-medium py-2 px-4 transition-colors duration-200 flex items-center justify-center gap-2',
+              'w-full bg-foreground hover:cursor-pointer text-background text-sm font-medium pb-2 pt-1 px-4 transition-colors duration-200 flex items-center justify-center gap-2',
               isExpanded ? 'rounded-sm' : 'rounded-b-sm',
             )}
             aria-label={isExpanded ? 'Collapse code block' : 'Expand code block'}
