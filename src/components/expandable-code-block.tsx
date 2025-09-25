@@ -36,8 +36,8 @@ export default function ExpandableCodeBlock({ html, lineCount, label }: Expandab
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             className={cn(
-              'w-full bg-foreground hover:cursor-pointer text-background text-sm font-medium pb-2 pt-1 px-4 transition-colors duration-200 flex items-center justify-center gap-2',
-              isExpanded ? 'rounded-sm' : 'rounded-b-sm',
+              'w-full bg-foreground hover:cursor-pointer text-background text-sm font-medium pb-2 px-4 transition-colors duration-200 flex items-center justify-center gap-2',
+              isExpanded ? 'rounded-sm pt-2' : 'rounded-b-sm pt-1',
             )}
             aria-label={isExpanded ? 'Collapse code block' : 'Expand code block'}
           >
