@@ -28,6 +28,7 @@ export const codeBlockConverter: JSXConverters<SerializedBlockNode> = {
       const html = highlighter.codeToHtml(node.fields.code, {
         lang: node.fields.language,
         theme: 'css-variables',
+        tabindex: false,
       })
 
       // Count lines for the client component
@@ -35,7 +36,7 @@ export const codeBlockConverter: JSXConverters<SerializedBlockNode> = {
 
       // Pass the pre-rendered HTML and metadata to the client component
       return (
-        <ExpandableCodeBlock 
+        <ExpandableCodeBlock
           html={html}
           lineCount={lineCount}
           language={node.fields.language}
