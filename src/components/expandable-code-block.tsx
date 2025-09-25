@@ -10,12 +10,7 @@ interface ExpandableCodeBlockProps {
   label?: string
 }
 
-export default function ExpandableCodeBlock({
-  html,
-  lineCount,
-  language,
-  label,
-}: ExpandableCodeBlockProps) {
+export default function ExpandableCodeBlock({ html, lineCount, label }: ExpandableCodeBlockProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
   // Only show collapse functionality if more than 30 lines
@@ -24,7 +19,7 @@ export default function ExpandableCodeBlock({
   return (
     <div className="relative">
       <div className="bg-shikhi-background text-shikhi-foreground rounded-t-md -mb-6 w-fit py-2 px-3.5 text-xs">
-        {label} <span className="italic text-muted-foreground text-xs ml-1">{language}</span>
+        {label}
       </div>
       <div
         className={`text-base custom-pre [&>pre]:rounded-md [&>pre]:rounded-tl-none overflow-hidden transition-all duration-300 ease-in-out ${
