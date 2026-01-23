@@ -1,67 +1,78 @@
-# Payload Blank Template
+# Personal Blog & Portfolio
 
-This template comes configured with the bare minimum to get started on anything you need.
+A modern full-stack blog and portfolio website built with Next.js 16, Payload CMS, and TypeScript. Features a clean design with syntax highlighting, expandable code blocks, and responsive layout.
 
-## Quick start
+## Features
 
-This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
+- 📝 **Blog System** - Full-featured blog with rich text editor
+- 💼 **Portfolio Section** - Showcase projects, skills, and experience
+- 🎨 **Syntax Highlighting** - Beautiful code blocks with Shiki
+- 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
+- ⚡ **Performance** - Built with Next.js 16 and optimized for speed
+- 🔧 **CMS Integration** - Easy content management with Payload CMS
+- 🌙 **Dark Mode** - Built-in dark theme (only supported theme)
 
-## Quick Start - local setup
+## Tech Stack
 
-To spin up this template locally, follow these steps:
+- **Framework**: Next.js 16 with App Router
+- **CMS**: Payload CMS 3.x
+- **Database**: MongoDB
+- **Styling**: Tailwind CSS with custom components from shadcn/ui
+- **Syntax Highlighting**: Shiki
+- **Icons**: Lucide React
+- **Storage**: Vercel Blob (for media)
 
-### Clone
+## Quick Start
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+1. **Clone and install dependencies**
+   ```bash
+   git clone https://github.com/knownasnaffy/blog
+   cd blog
+   bun install
+   ```
 
-### Development
+2. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   Add your MongoDB URI and other required environment variables.
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URI` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
+3. **Start development server**
+   ```bash
+   bun dev
+   ```
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+4. **Open in browser**
+   Visit `http://localhost:3000` and follow the setup instructions to create your admin user.
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+## Environment Variables
 
-#### Docker (Optional)
+```env
+PAYLOAD_SECRET=your-secret-key
+DATABASE_URI=mongodb://127.0.0.1/blog
+BLOB_READ_WRITE_TOKEN=your-vercel-blob-token
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+## Development
 
-To do so, follow these steps:
+- `bun dev` - Start development server
+- `bun build` - Build for production
+- `bun start` - Start production server
 
-- Modify the `MONGODB_URI` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URI` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+## Project Structure
 
-## How it works
+```
+src/
+├── app/(frontend)/          # Frontend pages and components
+│   ├── blog/               # Blog pages
+│   ├── components/         # Reusable components
+│   └── styles.css         # Global styles
+├── components/             # Shared components
+├── lib/                   # Utilities and converters
+└── payload.config.ts      # Payload CMS configuration
+```
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+## License
 
-### Collections
-
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
-
-- #### Users (Authentication)
-
-  Users are auth-enabled collections that have access to the admin panel.
-
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
-- #### Media
-
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
-
-### Docker
-
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
-
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
-
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+[The Unlicense](./LICENSE). Do whatever you want with it.
