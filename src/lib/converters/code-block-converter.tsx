@@ -1,6 +1,6 @@
 import type { SerializedBlockNode } from '@payloadcms/richtext-lexical'
 import type { JSXConverters } from '@payloadcms/richtext-lexical/react'
-import { createHighlighter, createCssVariablesTheme, bundledLanguagesInfo } from 'shiki'
+import { createHighlighter, createCssVariablesTheme, bundledLanguagesInfo, type Highlighter } from 'shiki'
 import ExpandableCodeBlock from '@/components/expandable-code-block'
 
 type CodeBlockFields = {
@@ -9,21 +9,29 @@ type CodeBlockFields = {
   language: string
 }
 
+let highlighterInstance: Highlighter | null = null
+
+const getHighlighter = async (): Promise<Highlighter> => {
+  if (!highlighterInstance) {
+    const myTheme = createCssVariablesTheme({
+      name: 'css-variables',
+      variablePrefix: '--shiki-',
+      variableDefaults: {},
+      fontStyle: true,
+    })
+
+    highlighterInstance = await createHighlighter({
+      langs: bundledLanguagesInfo.map((item) => item.id),
+      themes: [myTheme],
+    })
+  }
+  return highlighterInstance
+}
+
 export const codeBlockConverter: JSXConverters<SerializedBlockNode> = {
   blocks: {
     'code-block': async ({ node }: { node: { fields: CodeBlockFields } }) => {
-      // Do all the heavy lifting on the server
-      const myTheme = createCssVariablesTheme({
-        name: 'css-variables',
-        variablePrefix: '--shiki-',
-        variableDefaults: {},
-        fontStyle: true,
-      })
-
-      const highlighter = await createHighlighter({
-        langs: bundledLanguagesInfo.map((item) => item.id),
-        themes: [myTheme],
-      })
+      const highlighter = await getHighlighter()
 
       const html = highlighter.codeToHtml(node.fields.code, {
         lang: node.fields.language,
@@ -41,6 +49,7 @@ export const codeBlockConverter: JSXConverters<SerializedBlockNode> = {
           lineCount={lineCount}
           language={node.fields.language}
           label={node.fields.label}
+          code={node.fields.code}
         />
       )
     },

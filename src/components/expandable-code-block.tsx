@@ -2,22 +2,60 @@
 
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
+import { Button } from './ui/button'
+import { Check, Clipboard } from 'lucide-react'
+import clsx from 'clsx'
 
 interface ExpandableCodeBlockProps {
   html: string
+  code: string
   lineCount: number
   language: string
   label?: string
 }
 
-export default function ExpandableCodeBlock({ html, lineCount, label }: ExpandableCodeBlockProps) {
+export default function ExpandableCodeBlock({
+  html,
+  lineCount,
+  label,
+  code,
+}: ExpandableCodeBlockProps) {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [isCopied, setIsCopied] = useState(false)
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code)
+    setIsCopied(true)
+    setTimeout(() => setIsCopied(false), 1749)
+  }
 
   // Only show collapse functionality if more than 30 lines
   const shouldCollapse = lineCount > 30
 
   return (
     <div className="relative">
+      <Button
+        variant={isCopied ? 'default' : 'outline'}
+        className={clsx(
+          'absolute top-10 right-3 hover:cursor-pointer transition-all',
+          isCopied && 'scale-90!',
+        )}
+        size={'icon'}
+        onClick={handleCopy}
+      >
+        <Clipboard
+          className={clsx(
+            'transition-opacity duration-200',
+            isCopied ? 'opacity-0' : 'opacity-100',
+          )}
+        />
+        <Check
+          className={clsx(
+            'absolute transition-opacity duration-200 stroke-3',
+            isCopied ? 'opacity-100' : 'opacity-0',
+          )}
+        />
+      </Button>
       <div className="bg-shikhi-background text-shikhi-foreground rounded-t-md -mb-6 w-fit py-2 px-3.5 text-xs">
         {label}
       </div>
