@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" xmlns:bx="https://boxy-svg.com" id="barinr-logo">
+  <g transform="matrix(1.112155, 0, 0, 1.112155, 12.50231, -14.050506)" id="object-0">
+    <text class="logo-text-left fill-foreground" style="font-family: var(--font-cascadia-code), 'Cascadia Code', monospace; font-size: 150px; font-weight: 600;" x="0" y="176.957">B</text>
+    <text class="logo-sphere fill-accent" style="font-family: var(--font-cascadia-code), 'Cascadia Code', monospace; font-size: 150px; font-weight: 600; letter-spacing: -30px;" x="90.711" y="176.957">{·}</text>
+    <text
+      x="302.0"
+      y="176.957"
+      class="logo-text-right fill-foreground"
+      style="font-family: var(--font-cascadia-code), 'Cascadia Code', monospace; font-size: 150px; font-weight: 600;">
+      rinr
+    </text>
+  </g>
+  <defs>
+    <bx:export>
+      <bx:file format="svg" href="#object-0" path="Sin título.svg"/>
+    </bx:export>
+  </defs>
+</svg>

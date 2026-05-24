@@ -1,78 +1,53 @@
-# Personal Blog & Portfolio
+# Devosfera
 
-A modern full-stack blog and portfolio website built with Next.js 16, Payload CMS, and TypeScript. Features a clean design with syntax highlighting, expandable code blocks, and responsive layout.
+This is a personal blog project based on the AstroPaper theme, featuring a heavy Terminal/Cyberpunk aesthetic.
+
+This project was forked from [0xdres/astro-devosfera](https://github.com/0xdres/astro-devosfera) (MIT license) and has been modified to be written in English, along with several other features and refinements I was interested in.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cb066340-13bf-40c5-ae8d-268a7198c8cc" />
+
+<details>
+
+<summary><h2>Full Screenshot</h2></summary>
+
+<img width="1289" height="2042" alt="2026-04-03 14 12 20 blog barinr xyz 0d2e39d5637e" src="https://github.com/user-attachments/assets/02fd8cdf-16e6-435e-982a-9bb33c582799" />
+
+</details>
 
 ## Features
 
-- 📝 **Blog System** - Full-featured blog with rich text editor
-- 💼 **Portfolio Section** - Showcase projects, skills, and experience
-- 🎨 **Syntax Highlighting** - Beautiful code blocks with Shiki
-- 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
-- ⚡ **Performance** - Built with Next.js 16 and optimized for speed
-- 🔧 **CMS Integration** - Easy content management with Payload CMS
-- 🌙 **Dark Mode** - Built-in dark theme (only supported theme)
-
-## Tech Stack
-
-- **Framework**: Next.js 16 with App Router
-- **CMS**: Payload CMS 3.x
-- **Database**: MongoDB
-- **Styling**: Tailwind CSS with custom components from shadcn/ui
-- **Syntax Highlighting**: Shiki
-- **Icons**: Lucide React
-- **Storage**: Vercel Blob (for media)
+- **Astro 5.0** - High-performance static site generation.
+- **Markdown & MDX** - Write your content in your preferred format.
+- **Cyberpunk Aesthetic** - Custom terminal-inspired design with aurora effects and glassmorphism.
+- **Global Search** - Fast, static search powered by Pagefind.
+- **Image Galleries** - Built-in support for image collections and lightboxes.
+- **SEO Ready** - Sitemap, RSS, and dynamically generated OG images.
 
 ## Quick Start
 
-1. **Clone and install dependencies**
-   ```bash
-   git clone https://github.com/knownasnaffy/blog
-   cd blog
-   bun install
-   ```
+Ensure you have [Bun](https://bun.sh/) installed. Or use `npm` or equivalent if you want to use Node.js.
 
-2. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   ```
-   Add your MongoDB URI and other required environment variables.
+```bash
+# 1. Install dependencies
+bun install
 
-3. **Start development server**
-   ```bash
-   bun dev
-   ```
-
-4. **Open in browser**
-   Visit `http://localhost:3000` and follow the setup instructions to create your admin user.
-
-## Environment Variables
-
-```env
-PAYLOAD_SECRET=your-secret-key
-DATABASE_URI=mongodb://127.0.0.1/blog
-BLOB_READ_WRITE_TOKEN=your-vercel-blob-token
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+# 2. Start the development server
+bun run dev
 ```
 
-## Development
+The search index is generated during the build process. To test search locally, run:
 
-- `bun dev` - Start development server
-- `bun build` - Build for production
-- `bun start` - Start production server
-
-## Project Structure
-
+```bash
+bun run build && bun run preview
 ```
-src/
-├── app/(frontend)/          # Frontend pages and components
-│   ├── blog/               # Blog pages
-│   ├── components/         # Reusable components
-│   └── styles.css         # Global styles
-├── components/             # Shared components
-├── lib/                   # Utilities and converters
-└── payload.config.ts      # Payload CMS configuration
-```
+
+## Customization
+
+- **Posts**: Add .md or .mdx files to `src/data/blog/`.
+- **Galleries**: Create a folder in `src/data/galleries/` with an `index.md` and your images.
+- **Journey**: Add milestones to `src/data/journey/`.
+- **Skills**: Update your skill set and experience in `src/data/home/skills.ts`.
 
 ## License
 
-[The Unlicense](./LICENSE). Do whatever you want with it.
+This project is licensed under the MIT License. It is based on AstroPaper by Sat Naing and the Devosfera fork by Andrés.

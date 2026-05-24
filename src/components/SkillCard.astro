@@ -1,0 +1,66 @@
+---
+import { slugifyStr } from "@/utils/slugify";
+import type { Skill } from "@/data/home/skills";
+import IconDot from "@/assets/icons/IconDot.svg";
+
+type Props = Skill;
+
+const { name, category, experience, highlights } = Astro.props;
+---
+
+<li
+  class:list={[
+    "card-glow group/card relative my-3 rounded-2xl p-4 sm:p-5",
+    "border border-border/25",
+    "transition-all duration-300 ease-out",
+    "hover:border-accent/40 hover:bg-accent/5",
+    "hover:shadow-lg hover:shadow-accent/10",
+  ]}
+>
+  <div
+    class="card-glow-effect pointer-events-none absolute inset-0 z-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div
+    class="card-noise pointer-events-none absolute inset-0 z-1 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative z-5">
+    <h3
+      class="rounded-sm text-lg font-semibold text-foreground transition-colors duration-200 group-hover/card:text-accent"
+      style={{ viewTransitionName: slugifyStr(name.replaceAll(".", "-")) }}
+    >
+      {name}
+      <span class="absolute -inset-4 z-10 sm:-inset-5" aria-hidden="true"
+      ></span>
+    </h3>
+
+    <p class="relative z-20 mt-1 text-sm opacity-65">
+      {category.toUpperCase()}
+    </p>
+
+    <ul class="relative z-20 mt-2 text-sm opacity-65">
+      {
+        highlights.map(item => (
+          <li class="inline-flex items-start">
+            <span class="mr-2 inline-flex items-center">
+              <IconDot class="size-4.5 scale-150 text-foreground" />
+            </span>
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-2 h-px flex-1 bg-border/20"></div>
+
+    <p class="relative z-20 mt-2 inline-flex items-center gap-1.5 text-sm">
+      <span class="text-lg font-bold text-accent">{experience}</span>
+      Years of experience
+    </p>
+  </div>
+</li>
