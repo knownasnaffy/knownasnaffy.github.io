@@ -1,87 +1,78 @@
-# Welcome to React Router!
+# Personal Blog & Portfolio
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A modern full-stack blog and portfolio website built with Next.js 16, Payload CMS, and TypeScript. Features a clean design with syntax highlighting, expandable code blocks, and responsive layout.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- 📝 **Blog System** - Full-featured blog with rich text editor
+- 💼 **Portfolio Section** - Showcase projects, skills, and experience
+- 🎨 **Syntax Highlighting** - Beautiful code blocks with Shiki
+- 📱 **Responsive Design** - Mobile-first approach with Tailwind CSS
+- ⚡ **Performance** - Built with Next.js 16 and optimized for speed
+- 🔧 **CMS Integration** - Easy content management with Payload CMS
+- 🌙 **Dark Mode** - Built-in dark theme (only supported theme)
 
-## Getting Started
+## Tech Stack
 
-### Installation
+- **Framework**: Next.js 16 with App Router
+- **CMS**: Payload CMS 3.x
+- **Database**: MongoDB
+- **Styling**: Tailwind CSS with custom components from shadcn/ui
+- **Syntax Highlighting**: Shiki
+- **Icons**: Lucide React
+- **Storage**: Vercel Blob (for media)
 
-Install the dependencies:
+## Quick Start
 
-```bash
-npm install
+1. **Clone and install dependencies**
+   ```bash
+   git clone https://github.com/knownasnaffy/blog
+   cd blog
+   bun install
+   ```
+
+2. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   Add your MongoDB URI and other required environment variables.
+
+3. **Start development server**
+   ```bash
+   bun dev
+   ```
+
+4. **Open in browser**
+   Visit `http://localhost:3000` and follow the setup instructions to create your admin user.
+
+## Environment Variables
+
+```env
+PAYLOAD_SECRET=your-secret-key
+DATABASE_URI=mongodb://127.0.0.1/blog
+BLOB_READ_WRITE_TOKEN=your-vercel-blob-token
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-### Development
+## Development
 
-Start the development server with HMR:
+- `bun dev` - Start development server
+- `bun build` - Build for production
+- `bun start` - Start production server
 
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+## Project Structure
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+src/
+├── app/(frontend)/          # Frontend pages and components
+│   ├── blog/               # Blog pages
+│   ├── components/         # Reusable components
+│   └── styles.css         # Global styles
+├── components/             # Shared components
+├── lib/                   # Utilities and converters
+└── payload.config.ts      # Payload CMS configuration
 ```
 
-## Styling
+## License
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+[The Unlicense](./LICENSE). Do whatever you want with it.

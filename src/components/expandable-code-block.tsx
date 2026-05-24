@@ -1,0 +1,102 @@
+'use client'
+
+import { cn } from '@/lib/utils'
+import { useState } from 'react'
+import { Button } from './ui/button'
+import { Check, Clipboard } from 'lucide-react'
+import clsx from 'clsx'
+
+interface ExpandableCodeBlockProps {
+  html: string
+  code: string
+  lineCount: number
+  language: string
+  label?: string
+}
+
+export default function ExpandableCodeBlock({
+  html,
+  lineCount,
+  label,
+  code,
+}: ExpandableCodeBlockProps) {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [isCopied, setIsCopied] = useState(false)
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code)
+    setIsCopied(true)
+    setTimeout(() => setIsCopied(false), 1749)
+  }
+
+  // Only show collapse functionality if more than 30 lines
+  const shouldCollapse = lineCount > 30
+
+  return (
+    <div className="relative">
+      <Button
+        variant={isCopied ? 'default' : 'outline'}
+        className={clsx(
+          'absolute top-10 right-3 hover:cursor-pointer transition-all',
+          isCopied && 'scale-90!',
+        )}
+        size={'icon'}
+        onClick={handleCopy}
+      >
+        <Clipboard
+          className={clsx(
+            'transition-opacity duration-200',
+            isCopied ? 'opacity-0' : 'opacity-100',
+          )}
+        />
+        <Check
+          className={clsx(
+            'absolute transition-opacity duration-200 stroke-3',
+            isCopied ? 'opacity-100' : 'opacity-0',
+          )}
+        />
+      </Button>
+      <div className="bg-shikhi-background text-shikhi-foreground rounded-t-md -mb-6 w-fit py-2 px-3.5 text-xs">
+        {label}
+      </div>
+      <div
+        className={`text-base custom-pre [&>pre]:rounded-md [&>pre]:rounded-tl-none overflow-hidden transition-all duration-300 ease-in-out ${
+          shouldCollapse && !isExpanded ? 'max-h-96' : 'max-h-none'
+        }`}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+
+      {shouldCollapse && (
+        <div className={cn(!isExpanded ? 'absolute bottom-0 left-0 right-0' : 'mt-2')}>
+          {!isExpanded && (
+            <div className="bg-gradient-to-t from-foreground to-transparent h-4 pointer-events-none" />
+          )}
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className={cn(
+              'w-full bg-foreground hover:cursor-pointer text-background text-sm font-medium pb-2 px-4 transition-colors duration-200 flex items-center justify-center gap-2',
+              isExpanded ? 'rounded-sm pt-2' : 'rounded-b-sm pt-1 focus-within:ring-0',
+            )}
+            aria-label={isExpanded ? 'Collapse code block' : 'Expand code block'}
+          >
+            <span>{isExpanded ? 'Show Less' : `Show More (${lineCount} lines)`}</span>
+            <svg
+              className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+        </div>
+      )}
+    </div>
+  )
+}
