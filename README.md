@@ -17,20 +17,20 @@ This project was forked from [0xdres/astro-devosfera](https://github.com/0xdres/
 
 ## Quick Start
 
-Ensure you have [Bun](https://bun.sh/) installed. Or use `npm` or equivalent if you want to use Node.js.
+Ensure you have [Pnpm](https://pnpm.io/) installed. Or use `npm` or equivalent if you want to use Node.js.
 
 ```bash
 # 1. Install dependencies
-bun install
+pnpm install
 
 # 2. Start the development server
-bun run dev
+pnpm run dev
 ```
 
 The search index is generated during the build process. To test search locally, run:
 
 ```bash
-bun run build && bun run preview
+pnpm run build && pnpm run preview
 ```
 
 ## Customization
