@@ -31,7 +31,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.7",
     "@pagefind/default-ui": "^1.4.0",
-    "@shikijs/transformers": "^3.22.0",
+    "@shikijs/transformers": "^4.4.3",
     "@tailwindcss/typography": "^0.5.19",
     "@typescript-eslint/parser": "^8.57.0",
     "eslint": "^10.0.0",
